@@ -1,0 +1,253 @@
+import submitit
+import os
+import datetime
+import argparse
+import yaml
+import re
+
+
+class Trainer:
+    def __init__(self, output_dir, word_size, config):
+        self.cwd = "/private/home/ziweiji/Hallu_Det/probe"
+        self.conda_env_name = "detect"
+        self.conda_path = "/private/home/ziweiji/anaconda3"
+        self.output_dir = output_dir
+        self.training_args = config.get("training_args", {})
+        self.word_size = word_size
+
+    def create_cmd(self):
+        args = []
+        for key, value in self.training_args.items():
+            if key == 'fsdp':
+                args.append(f"--{key} \"{value}\"")
+                continue
+            if type(value) == bool:
+                args.append(f"--{key} {str(value)}")
+            elif type(value) == str:
+                if key in ['learning_rate']:
+                    args.append(f"--{key} {value}")
+                else:
+                    value = re.sub(r"\n", r"\\n", value)
+                    values = value.split(" ")
+                    values = [f"\"{v}\"" for v in values]
+                    values = " ".join(values)
+                    args.append(f"--{key} {values}")
+            elif type(value) in [int, float]:
+                args.append(f"--{key} {value}")
+            else:
+                assert False, f"Unsupported type: {type(value)}"
+        args = " \\\n".join(args)
+        cmd = f"""
+source {self.conda_path}/etc/profile.d/conda.sh
+conda activate {self.conda_env_name}
+export MKL_THREADING_LAYER=GNU
+hash -r
+
+echo "Using NVCC:"
+which nvcc
+echo "Using python:"
+which python
+echo "Python version:"
+python --version
+echo "Using torchrun:"
+which torchrun
+
+export WANDB_PROJECT=probe
+OMP_NUM_THREADS=16 \\
+python -m torch.distributed.run --nproc_per_node=8 /private/home/ziweiji/Hallu_Det/probe/train_ff_multilayers_regressor_trainer.py \\
+--output_dir "{self.output_dir}" {args} 
+"""
+        # 
+        print(cmd)
+        return cmd
+
+    def __call__(self):
+        import os
+        import subprocess
+        os.chdir(self.cwd)
+        cmd = self.create_cmd()
+        subprocess.run(cmd, shell=True, check=True, executable="/bin/zsh")
+
+
+def load_config(args):
+    """
+
+for D in 'tivia_qa' 'nq_open' 'pop_qa'
+do
+for L in "range(10,20)" "range(5,20)"
+do
+for U in ling_uncertainty
+do
+for LR in 1e-3 5e-3 1e-4 5e-4 1e-5 5e-5 1e-2 5e-2
+do
+python scripts/submit_job_trainer.py \
+--dataset $D \
+--model_type "LinearRegressor" \
+--layers_to_process $L \
+--label_name $U \
+--learning_rate $LR \
+--save_cache "only_question_last_activations"
+
+done
+done
+done
+done
+
+
+#  1e-3 5e-3 1e-4 5e-4 1e-5 5e-5
+for D in 'trivia_qa' 'nq_open' 'pop_qa'
+do
+for L in "range(10,15)" "range(5,15)" "range(10,20)" "range(5,25)"
+do
+for U in sentence_semantic_entropy
+do
+for MODEL in "Qwen2.5-7B-Instruct" 
+do
+for LR in 1e-2 5e-2
+do
+python ~/Hallu_Det/probe/scripts/submit_job_trainer.py \
+--dataset $D \
+--model_type "LinearRegressor" \
+--layers_to_process $L \
+--label_name $U \
+--learning_rate $LR \
+--internal_model_name $MODEL &
+
+done
+done
+done
+done
+done
+
+
+ 5e-5 1e-4 5e-4 1e-3 5e-3 1e-2 5e-2
+
+    """
+
+    if args.internal_model_name == 'Meta-Llama-3.1-8B-Instruct':
+        source_dirs = [f"/private/home/ziweiji/Hallu_Det/datasets/{args.dataset}/sampled/"]
+    else:
+        source_dirs = [f"/private/home/ziweiji/Hallu_Det/datasets/{args.dataset}/{args.internal_model_name}/"]
+
+    data_paths = []
+    for d in source_dirs:
+        data_paths.append(d+"{split}.csv")
+    data_paths = " ".join(data_paths)
+    source_dirs = " ".join(source_dirs)
+
+    if len(args.layers_to_process) < 3:
+        if args.model_type == 'Linear':
+            per_device_train_batch_size = per_device_eval_batch_size = 160
+        else:
+            per_device_train_batch_size = per_device_eval_batch_size = 160
+    else:
+        if args.model_type == 'Linear':
+           per_device_train_batch_size = per_device_eval_batch_size = 80
+        else:
+            per_device_train_batch_size = per_device_eval_batch_size = 80
+
+    return {'training_args': {
+        "model_type": args.model_type,
+        "info_type": "last", # don't add only question!!
+        "save_cache": args.save_cache,
+        "label_name":  args.label_name, # "ling_uncertainty", "sematic_entropy" 
+        "layers_to_process": args.layers_to_process,
+        "internal_model_name": args.internal_model_name,
+        "source_dirs": source_dirs,
+        "data_paths": data_paths,
+        "use_val_to_train": bool(args.use_val_to_train),
+        "pair_differ": False,
+        "hidden_batch_size": 64,
+        "save_hidden_state": True,
+        "p_num_latents_list": 1,
+        "share_perceiver": True,
+        "per_device_train_batch_size": per_device_train_batch_size,
+        "per_device_eval_batch_size": per_device_eval_batch_size,
+        "gradient_accumulation_steps": 8,
+        "do_train": True,
+        "do_eval": True,
+        "learning_rate": args.learning_rate,
+        "warmup_ratio": 0.1,
+        "max_grad_norm": 0.3,
+        "weight_decay": 0.001,
+        "eval_strategy": "epoch",
+        "save_strategy": "epoch",
+        "load_best_model_at_end": True,
+        "fp16": True,
+        "num_train_epochs": 30,
+        "metric_for_best_model": "mse",
+        "greater_is_better": False,
+        "save_total_limit": 1,
+        "logging_strategy": "steps",
+        "logging_steps": 100,
+        "report_to": "wandb",
+        "max_seq_length": 512,
+        'lora': False,
+        "overwrite_output_dir": True,
+        }}
+
+def parse_args():
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(description="Submitit Training Script")
+    parser.add_argument("--layers_to_process", type=str, default="",)
+    parser.add_argument("--dataset", type=str, default="",)
+    parser.add_argument("--model_type", type=str, default="",)
+    parser.add_argument("--label_name", type=str, default="",)
+    parser.add_argument("--learning_rate", type=float, default=1e-4)
+    parser.add_argument("--use_val_to_train", type=int, default=0)
+    parser.add_argument("--save_cache", type=str, default="only_question_last_activations")
+    parser.add_argument("--internal_model_name", type=str, default="")
+    return parser.parse_args()
+
+
+    
+def get_run_output_dir(args):
+    print("get_run_output_dir args", args)
+    model_type = args['model_type']
+    label_name = args['label_name']
+    lr = args['learning_rate']
+    save_cache = args['save_cache']
+    layers_to_process = args['layers_to_process']
+    # "/home/ziweiji/Hallu_Det/datasets/"$DATA"/"$DATASPLIT
+    source_dirs = args['source_dirs'].split(" ")
+    datatset = []
+    for source_dir in source_dirs:
+        datatset.append(source_dir.split("/")[-3])
+    datatset = '_'.join(datatset)
+    datasplit = source_dirs[0].split("/")[-2]
+    if 'only_question' in save_cache:
+        description = f"outputs/{model_type}_{label_name}/{datatset}_{datasplit}/{lr}_{layers_to_process}"
+    else:
+        description = f"ans_outputs/{model_type}_{label_name}/{datatset}_{datasplit}/{lr}_{layers_to_process}"
+    # description += datetime.datetime.now().strftime("%m%d-%H%M")
+    return description
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    # Load configuration
+    config = load_config(args)
+    output_dir = get_run_output_dir(config['training_args'])
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Initialize the executor
+    nodes = 1
+    executor = submitit.AutoExecutor(folder=output_dir)
+    executor.update_parameters(
+        mem_gb=700,
+        gpus_per_node=8,
+        cpus_per_task=80,
+        nodes=nodes,
+        timeout_min=4320,
+        slurm_partition="learnfair",
+        # slurm_constraint=args.slurm_constraint, 
+        # slurm_mail_user="zjiad@connect.ust.hk",
+        # slurm_mail_type="END,FAIL,BEGIN",
+        slurm_exclude='learnfair6000,learnfair6001',
+    )
+    # Submit the job
+    word_size = nodes * 8
+    job = executor.submit(Trainer(output_dir, word_size, config))
+
+    print(f'Output directory: {output_dir}')
+    print(f"Submitted job with ID: {job.job_id}")
