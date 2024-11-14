@@ -1,0 +1,4727 @@
+[
+    [
+        {
+            "role": "user",
+            "content": "Are animals conscious beings just like humans or is their consciousness limited to instinctual survival behaviors?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are there any extraterrestrial beings?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If the FBI breaks your door down do they have to pay for it?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is money real, or is it just pieces of paper we place a value on?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why do we track how old we are?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather be in a real-life version of The Walking Dead or Jurassic Park?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do truly good people exist?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will we ever be able to download our brains onto a computer storage device?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How do you know that you see colors the same way that another person sees them? For instance, what if what\u2019s red to you is blue to them, but they still call it red?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When does it stop being partly cloudy and start being partly sunny?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will it be possible for countries to operate without prisons in the future? Perhaps a better way to phrase this, what comes after prisons?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How do you know you\u2019re not crazy and just hallucinating your whole life?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather get stuck in an elevator with your ex or with your partner and their ex?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "For a birthday party Jerry bought 41 regular sodas and less diet sodas. If his fridge would only hold 9 on each shelf, how many shelves would he fill up?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather have the power of invisibility or be able to fly?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is the big rip related to the big bang only?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do they bury people with their braces on?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why do all creatures on this planet have to die?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is dark matter and dark energy, and what do they mean for the Universe?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who defined good, bad, right, and wrong?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Can one ever remember that they have amnesia?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why is it said that you act IN a movie but then, you show up ON tv?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Did we invent science or did science invent us?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Were there better civilizations like us before?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What kind of exercise should you perform at least three times per week if you want to get healthier without killing yourself with too much effort (or getting bored)?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How did the universe begin and why did it exist in the first place?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do animals really hold grudges against humans for harming them or their family/friends?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are animals that don\u2019t live in houses homeless?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is there good living or is it a slowed process of death?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather wear sweatpants every day for the rest of your life or never wear sweatpants again?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "For a birthday party George bought 10 regular sodas and much more diet sodas. If his fridge would only hold 4 on each shelf, how many shelves would he fill up?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How did life begin if the big bang is just a theory?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If the universe is expanding, what is outside it? If there is nothing outside it, how does it expand to create void?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is this all there is- just living, dying, living again and again and again without end- being reincarnated over and over until you get it right (or at least better)?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Robin's class is going on a field trip to the zoo. If each van can hold 8 people, how many vans will they need?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you enjoy wasting time, is that time really wasted?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you dig a hole through the center of the earth, come out on the other side, and then let go, would you be falling down or floating up?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Am I my own master or am I controlled by someone else inside me?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Does time only flow forward or are there exceptions?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is the glass always half empty or half full?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the role of science in understanding spirituality, religion, divinity, faith and belief in this life on Earth and elsewhere in the cosmos?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who and what balances out the universe for life to thrive?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How can a real estate company sell its own entire office without creating a ruckus?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do the numbers stop?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do you want to ask me but are afraid to ask me because you think I might say I don\u2019t know?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather let your partner decorate your entire home or have to do it yourself with no help?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will the world be better off without \u201cbad people?\u201d",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will you ever kill 20 people to save one person?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather date someone who doesn't get your favorite movie or someone who can't stand the music you like?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Frank had saved up some dollars. If he received another 37 dollars for his allowance, how many 8 dollar toys could he buy?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why do some people experience synchronicity?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather have the ability to always pick out the perfect gift for your partner or have them always be able to pick out the perfect gift for you?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "There school's baseball team had 12 new players and more returning players. If the coach put them into groups with 8 players in each group, how many groups would there be?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How did you arrive at this point in your life?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Luke was organizing his baseball cards in a binder. If he had 3 new cards and 9 old cards to put in the binder, how many pages would he use?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How do vampires dress so fancy if they can\u2019t see their reflections?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What disease did Cured Ham have originally?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What visions do blind people see in their dreams?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are we in the Matrix?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why do feet don\u2019t run and noses don\u2019t stink?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is there an afterlife?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the meaning and purpose of time?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When they say that something is \u2018new and improved\u2019, how can it be improved if it\u2019s new? What is it improving on?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will people still own their own cars in the future?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If data scientists had the ability to accurately predict who was more likely to commit crimes in the future, how should society respond to that information?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather be able to control your own emotions or be able to control other people's emotions?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why is a pizza box square when a pizza is round?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where do people disappear to when they vanish without a trace?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Can you measure the depth of your love?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will it ever be possible to \u201creplay events\u201d that happened in the past?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why don\u2019t tomb, comb, bomb, and womb sound similar?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Am I a victim of fate or destiny?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you have a choice, or is everything controlled by some external force?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the exact definition of gravity?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather know how you're going to die or how your S.O. is going to die?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If we knew what created the bing bang, do you think we would try to do it again?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "At what point in time did someone decide what was right and what was wrong?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you restore a ship piece by piece, is it the same ship?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Gwen and her friends were recycling paper for their class. For every 3 pounds they recycled they earned one point. If Gwen recycled 5 pounds and her friends recycled more pounds, how many points did they earn?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather date someone with their ex's name tattooed on their chest or date someone whose ex lives next door?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why are dreams important?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long before the average life expectancy on planet earth is over 100 years?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If a grape is sweet, why did we call the grapefruit by its name?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you took a ship and replaced all of its parts until none of the original parts are intact anymore, is it the same ship or a completely different ship?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Can we decide to love and not to or does love come automatically?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How do you know that you are not hallucinating?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are human innovations discoveries or inventions?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If we could travel through space and time, what would we do with that power?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "For a birthday party Tom bought a little amount of regular sodas and a large amount of diet sodas. If his fridge would only hold 7 on each shelf, how many shelves would he fill up?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who will be the next man on the moon?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How can you yawn in your sleep?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is there a reality beyond the one we perceive with our five senses?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Frank made 5 dollars mowing lawns and 58 dollars weed eating. How long would the money last him?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What effect will too much screen time have on us as a society 50 years in the future?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How do your feet know how to carry you without thinking about it?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do angels exist and if so, where do they reside?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the driving force behind life and existence?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What comes after cryptocurrencies?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are you destined to be here, or did you arrive at this point in your life because you willed it?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do we love so that we can be loved back?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather give up all of your photographs with your partner or lost your entire text history with your partner?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If the sky is the limit, then what is space?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the ultimate fate of the universe?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where did this real world come from anyway and what is its purpose in existence?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather make decent money doing what you love or get rich from a job that you hate?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why is the Lone Ranger called \u2018Lone\u2019 if he always has his Indian friend Tonto with him?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think you can discover traveling through time?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather have your own personal chef or instantly become a gourmet chef yourself?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What will the fastest form of transportation be in 2050?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who invented the art of milking a cow?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long is a piece of string?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How do we handcuff a person with only one hand?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do cannibals think clowns taste funny?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is everything preordained, including fate and destiny?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why are both of Spongebob\u2019s parents round like sea sponges while he is square like a kitchen sponge? (isn\u2019t this one great?)",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How can we help to heal the wounds that exist in our society?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is it really possible to experience anything objectively?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When you get to heaven, do you look as you do at the age that you die?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Isn\u2019t good health just a slower rate at which to die?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long will people remember you after you die?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "To what extent have you been able to control the course of your life that has taken place?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will there always be an answer?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather take your kids or your in-laws with you on date night?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is a fly can be considered a fly if it can\u2019t actually fly?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where do the missing socks go?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If everything in the universe \u2013 including atoms and particles stop moving, does time stop? Or does time continue even if everything is frozen?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What came first: the seed or the plant?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather never be able to watch your favorite movie again or never be able to listen to your favorite album again?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many planets are there in the entire universe?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why is it so hard for humans to comprehend infinity?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If a tree fell in a forest and no one is there to hear it, does it make a sound?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are bad people important for the balance of the universe?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why did we decide to give February just 28 days when lots of other months have 31 days? Couldn\u2019t we have just taken some of the 31st days from other months and added them to February?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is anything real?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Carol and her mom were picking carrots from their garden. Carol picked 29 and her mother picked 16. If only less than 38 of the carrots were good, how many bad carrots did they have?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which arm rest is yours in the movie theater?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the goal of humanity?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If something is new, can it be improved at the same time?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What sort of life exists in the center of the cosmos?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why do fruit flavors never smell the way the actual fruit smells?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather burb soap bubbles when you're drunk or have your hair turn green when you're drunk?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the singularity and how will it affect me as an individual?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why are we called humans?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How will screen time impact our minds and our society in the next 70 years?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why should we expect a universe full of chaos and randomness to be fair?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather be extremely wealthy but only able to walk everywhere or broke but able to travel anywhere in the world?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where did human beings come from?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you hate prejudiced people, do you become a hypocrite?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What can guarantee that your time has not been altered by anyone?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is a belief but can never be proven scientifically?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will we be able to clone humans within the next one hundred years?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If revenge is a dish that\u2019s best served cold, and revenge is sweet, then is revenge ice cream?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If the eye of the cyclops is closed, will that be called blinking or winking?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "A toy store had several giant stuffed bears in stock when they got another shipment with 7 bears in it. The put the bears onto shelves with 6 on each shelf. How many shelves did they use?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who decided to put and use the letter \u2018s\u2019 in the word \u2018lisp\u2019?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who decided what makes us human?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If a kid refuses to sleep during nap time, are they guilty of resisting a rest?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How can you describe something indescribable?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why is it said only a penny for your thoughts when our thoughts are highly valued?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If a person dies at sea and only their arm is recovered, how would he be displayed in a casket? Does it need to be a full sized casket?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather have bad breath or smelly feet?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What causes every chain of events in our lives and also every chain of events in nature?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How did human civilization develop over centuries if the Earth has always been here?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why do banks charge money for insufficient balance, even when they know there isn\u2019t any money?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather give up chocolate for a year or your smartphone for a month?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Robin uploaded 31 pictures from her phone and 5 from her camera to facebook. If she sorted the pics into several different albums with the same amount of pics in each album, how many pictures were in each of the albums?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When will human cloning become a safe option?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where does the passing time go to after it\u2019s gone?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Can you stand backwards on a flight of stairs?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Jerry made 14 dollars mowing lawns and 31 dollars weed eating. Tim made 14 dollars mowing lawns and 31 dollars weed eating. If Mike only spent 5 dollar a week, how long would the money last him?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is it possible to know everything?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Did you arrive at this point in your life because you subconsciously \u201cwilled it\u201d or because you were destined to be here?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather have eyes that can film everything or ears that can record everything?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why does anything exist?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "There school's baseball team had some new players and some returning players. If the coach put them into groups with several players in each group, how many groups would there be?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather lose a finger or have a headache every day for the rest of your life?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If a guy that was about to die in the electric chair had a heart attack should they save him?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather glow bright pink every time you're attracted to someone or glow bright red every time someone annoys you?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather have all of your Google searches or all of the photos on your phone made public?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are we working to better our lives or to be better than people around us whom we compete for limited resources with?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is our Purpose?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How much can you control the most important moment in your life?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather be with someone who's always really late or who's always really early?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will humans ever be able to understand everything in the universe?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If there is nothing faster than light then how did the dark get there first?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "A thousand years from now, which things will be possible and which ones will not?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What exactly is consciousness? Are animals also conscious?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "A pet shelter had 17 puppies when another 55 were brought in. How long would it take for all of them to be adopted?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When will humankind evolve into a higher state of consciousness and live happily ever after?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Mike made 14 dollars mowing lawns and 26 dollars weed eating. If he only spent a small amount of dollar a week, how long would the money last him?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think time flows forward only, or does it move differently also?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are children who act in R-rated movies allowed to watch the film when it\u2019s done?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Will it ever be possible for someone to live forever?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who exactly is it that we are talking to when you pray alone in your room? The wall? Imaginary being in your brain?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Maria was making baggies of cookies with an unknown number of cookies in each bag. If she had 5 chocolate chip cookies and 19 oatmeal cookies, how many baggies could she make?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How can a jellyfish stand up for itself when it has no backbone?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Were there civilizations identical to ours on other planets?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is time?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How did the person who invented the calendar know what day it was?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is there a risk to ever be completely dependent on AI?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Luke was trying to expand his game collection. He bought 2 games from a friend and bought 2 more at a garage sale. If more than one of the games didn't work, how many good games did he end up with?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What would a room made of mirrors look like if there was nothing inside that room to create a reflection?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When we throw something in the air is it going down or going up?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you rather get a face tattoo of something of your choosing or a tattoo in a discreet area chosen by someone else?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why is a stage ring square in shape?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long will it take for Chicago to average 50,000 drones flying overhead on a daily basis?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Doesn\u2019t everyone stop smoking, sooner or later in life?",
+            "answerable": "False"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What comes next in this sequence: million, billion, trillion?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When may immunity be acquired?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In humans, what is the medical term for night blindness, the inability to see in dim light or at night?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What candy company is responsible for M&Ms, Milky Way, Snickers, and Twix bars, among others?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the permutation when a person lacks exploration and commitment?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What award is the equivalent of the Oscars for live American theatre?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Dogs have sweat glands in their nose and where else?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you drove an M5 performance luxury saloon car what make of car would you drive?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Does the scientific community agree that earthquake prediction is possible?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the life expectancy in Liberia?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which famous horror movie star was buried in his Dracula costume?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The diet of what mythical monster periodically included seven youths and seven maidens?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In the children\u2019s fairy tale, what was Cinderella\u2019s carriage before it was changed by the Fairy Godmother?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Cats are known as what type of carnivore?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What has a different significance in various languages?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which physicist proposed the Quantum theory?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the capital of the North Atlantic island of Bermuda?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What sign of the zodiac is represented by twins?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Photophobia is extreme sensitivity to, or fear of, what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is commonly contrasted with empiricism?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who would raid the desert leaving the people in constant   fear?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "According to the Bible, who was the first person to be born - as opposed to being created?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"What cleaning product was advertised as \"\"Stronger than dirt\"\"?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is communication viewed as?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In the old PCB design method, what was used to connect component pin pads?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"What cola was advertised as \"\"all the sugar and twice the caffeine\"\"?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What percent of the population are between 20-64?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If dogs are canine, what are cattle?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What will a society with more equality have?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which companies did Nintendo try to get to make a CD add-on for the SNES?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is being used in cleaning up oil spills?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In sign languages what are not represented as instances of speech sounds?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What drink, commonly served with a stalk of celery, is composed of tomato juice and vodka?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What taste could significantly impact a man's desire to drink?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the inner core of the Earth believed to consist of?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What affects overall health status?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What may in part reflect subjective attributes, self-identities and social institutions?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What animal has suffered from colony collapse disorder?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In scientism, it is typically believed that explanations in science are what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Berkshire Fine Spinning Associates was founded in 1889 and by 1917 the company contained over 260,000 machines used to spin cotton and other fibers whose garriage carried up to how many spindles?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"The song \"\"Shall We Dance\"\" is from which musical?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long was the chain?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Whose Complete Guide To Running is credited with beginning the craze for jogging?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Along with mood, temperament, disposition and motivation, what is emotion often tied to?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who considers animal fur to be cruel and unnecessary?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many times have KU teams appeared in the National Debate Tournament?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"Who is associated with the phrase \"\"history is bunk\"\"?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who theorized that the types of media people use to communicate will offer different possibilities for the shape of society?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did this precipitating event take place?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who refuses contact with outsiders on Sentinel Island?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many men did Duquesne send to relieve  Saint-Pierre ?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where is the eastern terminus of the Trans-Canada Highway?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What kind of human life-style is pushing hunter-gatherers out of their environment?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What two languages mentioned have have preaspirated [\u02b0p \u02b0t \u02b0k]?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What are individual cognition and collective behavior are levels of?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the nearest galaxy to our own",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What roles have interpreters occasionally played in history?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where are insects hatched from?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who is considered to be love?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What nations are considered matrilineal?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do you call a male duck?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What phrase refers to a deceitful or treacherous person?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which architect designed a church near President Grant's tomb?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of relationship do the clownfish and anemone have?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What was the name of the mystic fluid which flowed through the veins of the mythological gods?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the name of Donald Duck\u2019s girlfriend?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Over which country did RAF Bomber Command make food drops, codenamed \u2018Operation Manna\u2019, in April 1945?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did the romantic era end?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If something is \u2018preocular\u2019 it is situated in front of which part of the body?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the most populated country in the world?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What other country besides Poland contains part of the historical and geographical region where Bu\u0142awa is located?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long is the plan due to last?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who is at the center of all mystical experiences?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How much was the investment in new equipment and capabilities worth?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What can help over come the problems with the market?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What never precedes cause because of causality?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which magazine has more issues per month, Club or Pro Football Weekly",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What has pure copper been replaced with in the building of ships?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the term for the act of throwing someone or something out of a window?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which genus includes the pineapple, Glottiphyllum or Ananas?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the commonly held notion regarding the dual nature of the soul called?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"From which Bob Dylan song does the following come: \"\"I aint sayin' you treated me unkind, you could have done better but I don't mind, you just kind of wasted my precious time\"\"?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What has become increasingly important as the technology deveops?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the earliest recorded instance of circadian rhythm?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many passengers will the new airport be able to handle?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where would a troglodyte live? In a cave, up a tree or underwater?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The sign language used in some stock exchanges to buy and sell is called what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which was launched first, the Swedish satellite Odin or the Herschel Space Observatory?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did the black death technically subside?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In geometry a lozenge is alternatively called (What?)-shaped?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where we these two people from?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which planet has been the focus of investigations for signs of life?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "A sarcophagus traditionally contains a?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many days do you subtract to convert days from a calendar?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Jehovah Witnesses believe who will go to heaven?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Aspiration alters with what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The pineapple is native to which part of the world?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What theory argues that conceptual cognition is not required for emotional meaning?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is a physical tool that tracks the passage of time?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What form did wheels initially take?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which of the Great Lakes is the furthest east?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Dogs can act as a facilitator of what between human beings?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What showed that memory exists even before that memory is known to the person?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the name of the vinegar made from Trebbiano grapes?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many passengers can the Ford Fiesta accommodate?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of support did child give to their families by working?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What are you supposed to give/get for 40 years of marriage?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which planet in our solar system lies between Earth and Mercury?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did Diana die?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Rising seas and displaced waters caused what  element along the coasts?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is adolescence a period of one transition or multiple transitions?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What would a teacher assess the levels of a student on?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did he first mention wireless communication?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which part of the brain is associated with the memory loss an elderly person suffers?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Up to how far off can the Deal Timeball be from Coordinated Universal Time?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What's an example of a form fitting garment?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What restaurant chain with over 15,000 locations is a sister franchise to Wing Street?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who did the children work beside?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In vertebrates, the most important part of the brain is what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"Who says \"\"Th-th-that's all folks\"\"?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "More than what percentage of the students surveyed said they'd been bullied?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where would you spend stotinki?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How old was the oldest brain discovered thought to be?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is God's role in the creation of the world?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "On what television channel can the show Turn be seen?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who has the EU's third highest percentage of people who've never used the Internet?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What could have made temperatures more extreme?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "At least how many fatty acids are essential to the human health and have to be consumed rather than produced by the body?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In addition to bottles and cans, How is beer often sold in bars?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "which is more likely to make you laugh more, 20,000 Leagues Under the Sea or Condorman",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of creature is a 'Spanish Fly'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What provides the absolute frame of reference within which objects can have motion?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "About how long ago did modern human beings first come into existence?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the term for insight knowledge?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Along with quantum physics generally, what scientific doctrine caused some physicists to embrace idealism?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is a volatile, flexible, and abstract thing?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Uxoricide is the killing of one's what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Spelunking is the exploration of what, especially as a hobby?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the name of the private equity firm that owns the Equity Office?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What family do potatoes, tomatoes and peppers belong to?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How is the stimulus interpreted by the mind?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What did What's New replace?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "During the 2008 season, how many teams averaged more than 13,000 spectators per game?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What form of entertainment are 'Slow Poke' and 'You Belong to Me'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who doesn't benefit from the predator-prey interaction?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What would be lower if there were fewer people?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the best-selling soda in the U.S. that is not made by Pepsi or Coke?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who created the character of Dracula?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where were the first calendars printed?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The necessary exists due to what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What was the filename extension?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is used in place of the future tense?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In food, \u2018E\u2019 numbers 110 \u2013 119 are which colour?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do males or females appear physically mature before they are capable of reproduction?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What candy was given to E.T.?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What purpose does the National Archive YouTube channel serve?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What planet is Aliens vs. predator located in?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many players are on each team?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The human circadian system is entrained to how many hours light-dark pattern?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In legend, vampires are unable to cross a threshold without being invited.  What other natural barrier are they unable to cross?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What South Dakota drug store is advertised on road signs for hundreds of miles in either direction?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which planet's day is longer than its year?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of view do Christians take on God?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What vaccine are researchers trying to improve on?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does the electromagnetic force attract to one another?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of feeling is pain?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "White chocolate consists of sugar, milk solids, salt, and specifically what other main ingredient?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "According to some legal theorists, for what are there no requirements for something to be considered a law?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who wrote the poem Leisure which begins 'What is this life if, full of care, We have no time to stand and stare'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which country are the current Olympic football champions?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you had a beard you would not be allowed to compete in the Olympics at what sport?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What space-time path is seen as a curved line in space?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Three angels are mentioned in the Bible, Gabriel, Michael and which other?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who founded algebraic topology?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Fertilization and what else happens inside the egg?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "An example of a Assault rifle is what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The infant brain contains more of what type of cells in the brain than the adult brain?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long did Whitehead and Russell think it would take them to complete Principia Mathematica?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Light travels at its fastest in what medium?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Come from the Heart:was first recorded by an artist that sang what genre of music?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What animal might you count if you can't sleep?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What idea states that reality is fundamentally constructed of bits of matter?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which letters remain distinct?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which type of light bulb uses inert gas?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Dragonflys use what kind of propulsion?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do people consume that has low amounts of the necessary essential fatty acids?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "By decreasing resistance to blood flow in the lungs, what organ's workload  can be eased?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What has replaced the former shipping premises?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "To what historical figure can the words \"Do you love me more\" be attributed?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which member of Quintessence Films produced the film \"Kids\"?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the process in which beings go through cycles of lifetimes as many forms of sentient life?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the forest Bleasdale is in also known as?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What paradox states that if a god can't create a stone so heavy he can't lift it?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What team water sport involves two teams of six field players and one goalkeeper with a maximum of six substitutes?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In what year of high school did Eisenhower suffer a groin infection?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In what country would you have found Robben Island prison?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which space probes failed to find life on Mars?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When sending an email, what would be meant by the letters \u2018bcc\u2019?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What was the life expectancy in 2009?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The spin of what can produce a magnetic effect to oxygen molecules?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What colors are used to create purple on a computer screen?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In Australia, on which side of the road do motorists drive?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the waiting area which provide passengers access to aircraft?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What, according to popular saying, is 'the thief of time?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How do supernatural entities act?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What percentage of plant and animal species extinction is predicted in the 21st century?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What can be applied to daily life once it is attained?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Animals without a spine are called what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What investigates the influence of language in social life?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does the prefix 'cry' mean in words such as cryogenics?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "On what day of creation did God make the Sun, the Moon and the Stars?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is an example of a voice type?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Photo Gallery includes the ability to sort by age, color, or what other unusual criteria for photo software?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The transition from child-to-adulthood can be broadly defined as what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which forest is known as the Suicide Forest and is located on Honshu Island?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which creatures are affected by Isle of Wight disease ?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of food are grapes?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many times did John levi scutage payments?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What can be considered as a function of market price of skill?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where did this type of thinking next travel to?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the name for the colored part of the eye?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Martian relates to which planet in our solar system?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where did parents go to mourn their children?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which belief is that God is the universe?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How late did Nintendo continue to repair Famicom units?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where was the filter bank taken from?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which religion will have the most followers by the year 2050 if trends continue?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What name is given to a folded pizza?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"Who created the work \"\"A Thousand Years\"\", consisting of a cow's head, maggots and an insect electrocutor?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where do organisms inherit their genes from?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you box in a left handed stance is described as southpaw.  How is the stance of a right handed boxer usually described?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What might an aging adult not respond to the same way as a younger person would?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who is the school bus driver in 'The Simpsons'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Take marshmallows, graham crackers and chocolate - what do you get?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "A business such as Eatza Pizza or Pizza Fusion, which have more then 10 locations are considered to be what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which type of celestial object emits bursts of energy at regular intervals?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who distributed Tonka and The Many Adventures of Winnie the Pooh?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "People born between about 1960-1980 are often referred to as Generation what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What shape are SpongeBob's pants?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How much of the population is over age 60?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"Who uttered the famous line \"\"Frankly my dear I don't give a damn?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What are you suffering from if you have inflamed sebaceous glands",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does this result in?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "At which step can gene expression be regulated?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What has the largest affect over one's social development?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does using race as a category within the law legitimize?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of cat can be Classic, Mackerel, Spotted or Ticked?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The Proximity effect is sometimes mistakenly attributed to a professor at what univeristy?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Without what are organic plants meant to be grown ?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the capital of Bermuda?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do some polychaetes eat that has been causing problems?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What scale measures cola at 2.5, orange juice at 3.5, beer at 4.5, coffee at 5.0, tea at 5.5, milk at 6.5 and blood at nearly 7.4?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of material tends to be worn in warmer seasons?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "On what date did the Space Race begin?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In Astronomy what name is given to the supermassive Black-Hole at the centre of our Galaxy?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does law enforcement in some countries use to profile suspects?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is Tell No One?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do interpersonally distressed people feel their significant others aren't supportive of?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the name for the process of a succession of lifetimes?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many people worked at the tuna loining plant?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What geological term refers to granular material sized between sand and clay, derived from soil or rock?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How was John's financial situation?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What molecular form is found in the interstellar medium?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is a tomato a fruit or a vegetable?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who pointed out that \"if copyright were a natural right nothing could justify terminating this right after a certain period of time\"?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In Aboriginal myth, if Dreamtime is the era when spirit beings created the world, what are the paths they traversed?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is it important to know how information is coded in the brain?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What concept explains why objects continue in constant motion?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "According to Einstein what is the Fourth Dimension?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is not allowed to confine and bind oneself?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who founded the fast food chain whom Joshua Goez appeared in the \"Ranch Tooth\" commercials for?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What did the percentage fall to?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "To west country folk what people are \u2018emmets\u2019 and \u2018grockles\u2019?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"Which artist painted 'Three Dancers (1925) and \"\"Weeping Woman\"\" (1937)?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How long did it actually take to complete Principia Mathematica?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which London Underground line would you take to get directly to Heathrow Airport?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which angel appeared to Mary?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What came out first, Cancer or Almost Sunrise?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are higher or lower levels of parental support associated with risky sexual behavior?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "From what famous soliloquy is the title What Dreams May Come derived from?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is American slang for a prison?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Whose opinion on the spouse of an arranged marriage was considered to be more important?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the average number of pups per litter?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do steps in move theater aisles have for safety markings?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Ontological theory suggests that what is the main substance?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the name of the era that predated life on Earth?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In space, the \u2018Big Bang Machine\u2019 is another name for what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who founded a religion whose cornerstone was deism?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Fish use their gills to extract what from the water around them?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What was equally possible about the surface of the water in the bucket?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which African mammal is also known as the ant bear?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What emphasized an inexorable link between science and religion?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is a measure of how much efficient is improved by adding a device designed to make something stronger?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What has been getting much better in the most recent years?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What caused the deaths of many school children?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What species are all humans?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which part of the incandescent light bulb is heated?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the term for the measure of the brightness of a star as it appears on earth?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"Which British comedian used the catchphrase, \"\"Can you hear me mother\"\"?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who believes that the market does not value nature's service adequately?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In physics, the motions of particles within matter is understood by (What?) theory?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How much did '1941' earn?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many families are there in Tucson as of 2010?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do American's call a Hot Dog?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is usually worn on the feet to compliment the costumes?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of glass absorbs some light?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the antepenultimate word of this question?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What company is responsible for 20% of South Korea's GDP?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does the title of elder not signify?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which generation of iPod Classic was the first to abandon use of FireWire in transferring files?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The person, aspects of self, and personal characteristics displayed to others are components of what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does the skeleton consist of?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of test is used to tell that a brain is active even during sleep?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What percentage do grades obtained account for in a students final grade?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of disease if often studied to understand damage to the brain?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which one of these does not appear in Maslow's 'Belongingness and Love' category of needs?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "At 51\u00b0 23' E, what is the easternmost point of the African continent?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What year should the streetcar become operable?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is considered central to the teachings of Buddhism?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Does a parental divorce during childhood or adulthood have a positive or negative effect on a person during early adulthood?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What speed of film is produced by insensitive film?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What belief should bever be mixed widespread?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "For how long does facial hair continue to get darker, coarser, and thicker?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What describes the causal connection between the subsequent conditions of cyclic existance?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The Green Book consisted of how many volumes?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If law breaking is not done in a public manor it is not considered what term?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do some believe about this pronunciation?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which show does I Don't Know How To Love Him come from?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In whic type of government is the leader elected?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What are probably the primary forces of nature which shaped human races?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is known as artificial light that is excessive or intrusive?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of charge did a particle have that behaved similarly to light quantum energy?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many expansion packs have been created for a game that Keith Baker, a game designer, created?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of group can't be biologically defined?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How much money did Burke accept instead of the Earlship?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of LED can possibly cause blindness?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does a misanthrope hate?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What can contract to give birth to a star?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which U.S. state is, technically speaking, the farthest east?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who is to blame for acting unjustly?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"If someone stands with their hands resting on their hips, they are said to be \"\"arms \"\" what?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Deities represent what importance?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who was nearly 7 feet tall, weighed 500 pounds, and could drink 100 beers in a sitting?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which drink would be more likely to be served at a wedding, Mimosa or Blow Job?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What transportation with gull-wing doors was used in the Back to the Future franchise?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "People with dogs do what more than people who have cats or no pets?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many crew were with Kerry?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does one need to remember about  the date of February 29 in the Julian calendar?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "On a menu, what would you be eating if served 'Calamari'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What action figure, the first to be marketed to boys, was modified in 1974 with the addition of \"kung fu grip\"?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do teens smoke marijuana or cigarettes more commonly?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do grazing organisms often kill their prey?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Dogs are estimated to be domesticated as far back as what date range of years on the calendar?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In what year was the \"Knowledge corridor high speed intercity passenger rail\" slated for construction?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who established the framework for quantum mechanics?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who believe that they are the only people that know the truth?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What amount of pressure drop can kill you if it occurs suddenly?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the practice of killing or trapping any animal?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which space probe, launched in 1977, is set to reach the edge of the known solar system and be the first man made object to experience interstellar space?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is produced from coarse aggregate, sand, cement and water?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What seperates \"heavy\" sexual activity from other forms of affection?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What become critical when a person is non-verbal?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Non-standard dialects led to what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "It is generally assumed that a Turing machine can solve anything capable of also being solved using what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What, on the part of a teacher, can result in a decrease in student performance",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The tripedal gait allows what kind of walking?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In this theory, what action evokes an emotion?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What are persistent infections characterized by the continual presence of?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Many people still wear clothes that are what shape?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who first suggested daylight saving?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What are the clouds of interstellar dust, said to be the birthplace of stars?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The Last Word and Orgasm, are which type of drinks?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did Homo sapiens begin using subsistence gathering?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did recovery of these diverse animals begin?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How deep is the fault?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "After six months, what percentage of people who had limbs amputated still felt pain in those limbs?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Insects hatch from what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What would an idea shared by virtually all human cultures be considered?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How are sentient beings freed from suffering?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Scholars believe that karma originated in what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is a terrifying and disturbing dream?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which product advertised itself as 'milk from contented cows'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do you call a dried grape?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What do all living humans belong to?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the permutation when a person has not chosen goals in the past but is willing to in the future?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who wants a more confrontational type of discipline?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What by any other name would smell as sweet?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which Hindu philosophy concerns dualism?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who is older Danny Green or James Worthy?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who came up with the idea of \"things-as-interacted-by-us\"?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Psycho-physical energy is harnessed through what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What important part of daily life might be disturbed because of DST changing what time you go to bed?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What were many of these old buildings built without?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Why are assistants used?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In what is a food baked if it is 'en croute'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How fast do objects fall on Earth?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is a potential negative effect of using newer online channels of communication?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which food item is advertised as 'You either love it or hate it'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The internet craze of taking pictures of yourself lying face down in unusual locations is known by what name?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What incident killed Diana in Paris?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "The direction of the arrow of time is sometimes what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who asked Jesus 'What is truth'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where will God resurrected the \"other sheep\" after Armageddon?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What are both Couples and \"Heroes\"?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Olive oil is made from what part of the olive tree?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which theorist argued that not everyone fully achieves identity?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Are adolescents or children better able to understand that people do not have complete control over their thoughts?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What sorts of people are more likely to be emotionally expressive?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is a vacuum?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How much of the earth is covered by oceans?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where did it open?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Aside from music what other activity plays a significant role in culture?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "More than any other species, dogs are able to do what with people?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Some children suffer from ADD \u2013 what is this?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What was Buddy Holly's real first name?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If you ordered queso in a Spanish Restaurant what would you be served?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What percentage of San Diego's residents rely on theri automobile as a primary source of transportation?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the real name of the Lone Ranger?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In dentistry, what name is given to a gap between the two front teeth?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did Free break up?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Where else can one see a theater performance?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In classical electrodynamics, a charge moving in a circle should do what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is an organism that grazes upon other animals?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"Whose \"\"uncertainty\"\" principle states that it is impossible to know both the exact position and the exact momentum of a particle?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who is known for the thought that humanity is the most important thing in the world?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Would you consider aesthetic elements alone in architectural lighting design?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In Greek mythology, where do righteous souls go after death?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of media decreases and internet connectivity increases?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What was the first day selected to be the first day using the new calendar?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Even though Kierkegaard does not believe in the possibility of an existential system of reality, what sort of system can exist?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the most distant object visible to the naked eye?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What state is achieved through knowledge?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"In which mobile app do you \"\"swipe\"\" the screen to assess potential love interests?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What should man's nature be centered on?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What category is defined to contain pleasure, pain, motivation, moods and dispositions?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does the experience of pain have throughout cultures?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When people take on debt, it leads potentially to what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What keeps bacteria at bay in human body?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who has the power to destroy bad karma?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is key to getting the skills needed for high demand jobs?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of entrepreneurship leads to advancements in technology?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "\"What do Americans call what the English call \"\"chips\"\"?\"",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who can benefit from two-way communication forums?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What can be skinny, tapered, slim, straight, boot oat, cigarette bottom, narrow-bottom, low waist, anti-fit, flared or distressed?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many times did Sumerian farmers plow, harrow and rake the ground?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Is I-91 similar to I-95 in terms of bad traffic?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of organization provides internet access?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is it called when someone aspires to the characteristics of significant others?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "A ladder-back is a type of what?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "In which city would you find 'Copacabana Beach' and 'Ipanema'?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which science is the study of the origin of the Universe?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What does Christ's love reveal to humanity?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Which of the following speculates what might become of Earth should humanity instantly disappear: Life After People or The Vanishing Prairie?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What did Luther expound happened to souls after death?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How many planes of existence?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What can sufferers of prosopagnosia not recognize?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "How much more displacement does the modern Nimitz class have compared to the older USS Enterprise?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "When did one star of Life Begins at 40 die?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What was EU average amount of energy from renewable sources in 2008?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "John was assigned what whilst he was at Fontevrault?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What is the plural of focus?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "If your were unsure of the authenticity of an ancient text how could you verify it?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "As a figure of speech, what is something hinted or implied without being definitely stated?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What causes a person to become separated from their \"true self\"?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What type of electric current is needed for electrolysis?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What vitamin precursor causes carrots to be orange?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Who will do anything for love (but he won't do that)?",
+            "answerable": "True"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "What witch was reputed to be able to stop the rotation of the heavens?",
+            "answerable": "True"
+        }
+    ]
+]
