@@ -34,7 +34,7 @@ python src/vllm-all.py
 ```
 bash verbal_uncertainty/scripts/judge.sh
 ```
-3. Merge the generated answers and calcualted uncertaities using datasets/merge.ipynb
+4. Merge the generated answers and calcualted uncertaities using datasets/merge.ipynb
 
 ## Feature Extraction
 ```
@@ -54,11 +54,11 @@ bash detector/scripts/LR.sh
 ```
 
 #  Uncertainty Probe
-1. save the hidden states of questions
+1. Obtain the hidden states of questions
 ```
 bash probe/scripts/get_hidden_state.sh
 ```
-2. train regressor probe given hidden state to predict the uncertainties (verbal uncertainty and semantic entropy)
+2. Train the regressor probe given hidden state to predict the uncertainties (verbal uncertainty and semantic entropy)
 ```
 bash probe/scripts/trainer.sh
 ```
