@@ -62,54 +62,30 @@ def load_config(args):
 conda activate detect
 cd /private/home/ziweiji/Hallu_Det/ling_uncertainty
 
-for DATA in 'trivia_qa' 'nq_open' 'pop_qa'
+for DATA in 'pop_qa'
 do
-for MODEL in llama-3.1-8B-grpo
+for MODEL in Llama-3.1-8B-GRPO-Instruct
 do
-for SPLIT in train val test
+for SPLIT in val test
 do
 python /private/home/ziweiji/Hallu_Det/ling_uncertainty/lu_llm_judge.py \
 --results_dir '/private/home/ziweiji/Hallu_Det/ling_uncertainty/outputs_10' \
 --dataset $DATA \
 --split $SPLIT \
 --model_name $MODEL \
---port 'http://learnfair6023:8000/v1' &
-done
-done
-done
-
-for DATA in 'trivia_qa' 'nq_open' 'pop_qa'
-do
-for MODEL in llama-3.1-8B-grpo
-do
-for SPLIT in train val test
-do
-python /private/home/ziweiji/Hallu_Det/ling_uncertainty/scripts/submit_job_judge.py \
---dataset $DATA \
---split $SPLIT \
---model_name $MODEL
+--port 'http://learnfair6008:8000/v1' &
 done
 done
 done
 
 
+6030 trivia_qa train tmux 0
+6037 nq_open train tmux 1
+6006 pop_qa train tmux 2
 
-for DATA in 'trivia_qa'
-do
-for MODEL in llama-3.1-8B-grpo
-do
-for SPLIT in test
-do
-python /private/home/ziweiji/Hallu_Det/ling_uncertainty/scripts/submit_job_judge.py \
---dataset $DATA \
---split $SPLIT \
---model_name $MODEL \
---batch_size 4
-
-done
-done
-done
-
+6012 trivia_qa val test tmux 3
+6039 nq_open val test tmux 4
+6008 pop_qa val test tmux 5
     """
     # if os.path.exists(config_path):
     #     with open(config_path, "r") as file:

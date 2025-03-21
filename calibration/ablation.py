@@ -1,63 +1,23 @@
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import pandas as pd
 from tqdm.auto import tqdm
-import numpy as np
 import argparse
 import sys
-import os
-
-current_path = os.getcwd()
-root_path = os.path.abspath(os.path.join(current_path, os.pardir))
 sys.path.append(root_path)
 from verbal_uncertainty.prompts import get_qa_system_prompt
-from sem_uncertainty.semantic_entropy.utils.utils import make_prompt
-import pickle
+sys.path.append(f"{root_path}/sem_uncertainty/semantic_entropy")
+from uncertainty.utils.utils import make_prompt
 from src.utils import process_layers_to_process
 # set seed 
 torch.manual_seed(42)
 np.random.seed(42)
 import jsonlines
 from collections import defaultdict
-
-# def remove_all_hooks(model):
-#     """Remove all forward/backward hooks from the model."""
-#     for module in model.modules():
-#         module._forward_hooks.clear()
-#         module._forward_pre_hooks.clear()
-#         module._backward_hooks.clear()
-
-
-# def register_feature_ablation_hook(model, Hs_feature, feat_vals_def, process_layers):
-#     for l in process_layers:
-#         device_idx_l = model.hf_device_map[f"model.layers.{l}"]
-#         h_feature_l = Hs_feature[l].to(f"cuda:{device_idx_l}")  # (h_dim)
-#         h_feature_l = h_feature_l / torch.sqrt(h_feature_l.pow(2).sum(-1))
-
-#         def make_feature_ablation_hook(h_feature_l, feat_val_def):
-#             def feature_ablation_hook(module, inputs, outputs):
-#                 if isinstance(outputs, tuple): # this case
-#                     outputs_0 = outputs[0]   # (B, seq_len, h_dim)
-#                     if outputs_0.shape[1] > 1:
-#                         b = torch.matmul(outputs_0, h_feature_l).unsqueeze(-1)
-#                         outputs_0 -= h_feature_l * b
-#                         outputs_0 += h_feature_l * feat_val_def
-#                         # print('feat_val_def', feat_val_def)
-#                         # print('mean', b.mean().item(), 'std', b.std().item(), 'b', b)
-#                         # print('diff', feat_val_def-b.mean().item(), 'b',feat_val_def-b)
-#                     return (outputs_0,) + outputs[1:]
-#                 else:
-#                     assert False
-#                     if outputs.shape[1] > 1: # (B, seq_len, h_dim)
-#                         outputs -= h_feature_l * torch.matmul(outputs, h_feature_l).unsqueeze(-1)
-#                         outputs += feat_val_def * h_feature_l
-#                     return outputs
-#             return feature_ablation_hook
-
-#         model.model.layers[l].register_forward_hook(
-#             make_feature_ablation_hook(h_feature_l, feat_vals_def[l])
-#         )
         
 def register_feature_ablation_hook2(model, Hs_feature, process_layers, alpha):
     if not hasattr(model, '_ablation_hooks'):
@@ -246,7 +206,7 @@ if __name__ == '__main__':
     else:
         results_df = pd.read_csv(f"{root_path}/datasets/{dataset}/{model_name}/{split}.csv")
     questions = results_df['question'].tolist()
-    lu_scores_llm = results_df['ling_uncertainty'].to_numpy()
+    lu_scores_llm = results_df['verbal_uncertainty'].to_numpy()
     answerable_labels = len(lu_scores_llm) * [1]
 
     # use threshold

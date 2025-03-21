@@ -1,3 +1,7 @@
+# Calibrating Verbal Uncertainty as a Linear Feature to Reduce Hallucinations
+Ziwei Ji*, Lei Yu*, Yeskendir Koishekenov, Yejin Bang, Anthony Hartshorn, Alan Schelten, Cheng Zhang, Pascale Fung, Nicola Cancedda
+[![arXiv](https://img.shields.io/badge/arXiv-2406.15927-b31b1b.svg)](https://arxiv.org/pdf/2503.14477)
+
 # Installation and Requirements
 ```
 git clone git@github.com:fairinternal/mechanistic_uncertainty_calibration.git
@@ -8,7 +12,7 @@ pip install -r requirements.txt
 # Dataset Preparation
 Download and process datasets using datasets/build_data.ipynb
 
-# Semantic Uncertainty
+# Semantic Uncertainty Calculation
 1. Sample multiple answers 
 ```
 bash sem_uncertainty/scripts/generate.sh
@@ -17,8 +21,6 @@ bash sem_uncertainty/scripts/generate.sh
 ```
 bash sem_uncertainty/scripts/run_compute_uncertainty.sh
 ```
-
-# Verbal Uncertainty Feature
 
 ## Verbal Uncertainty Calculation
 1. Sample multiple answers
@@ -36,6 +38,8 @@ bash verbal_uncertainty/scripts/judge.sh
 ```
 4. Merge the generated answers and calcualted uncertaities using datasets/merge.ipynb
 
+
+# Verbal Uncertainty Feature
 ## Feature Extraction
 ```
 bash calibration/scripts/universal_luf.sh
@@ -50,7 +54,7 @@ calibration/hedging-causal-validate.ipynb
 # Hallucination Detector
 Train LogisticRegression(LR)-based detector based on uncertainties
 ```
-bash detector/scripts/LR.sh
+bash detection/scripts/LR.sh
 ```
 
 #  Uncertainty Probe
@@ -73,7 +77,6 @@ bash calibration/scripts/semantic_control.sh
 ```
 bash calibration/scripts/run_eval.sh
 ```
-
 
 # License
 The majority of mechanistic_uncertainty_calibration is licensed under CC-BY-NC, however portions of the project are available under separate license terms: OATML is licensed under the MIT license.

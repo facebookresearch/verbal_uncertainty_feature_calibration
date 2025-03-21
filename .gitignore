@@ -46,3 +46,6 @@ archived
 qa-eval-results/
 activation-cache
 .DS_Store
+analysis.ipynb
+best.ipynb
+*/scripts/*2.*

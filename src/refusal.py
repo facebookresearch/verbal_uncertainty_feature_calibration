@@ -150,23 +150,39 @@ def jsonify_ans(raw_responses: List[str], key: str):
 
 
 def run_eval(generations, res_path, port="", overwrite=False):
+    history_i = 0
+    history_refusal = []
     if os.path.exists(res_path) and not overwrite:
         res = json.load(open(res_path, "r"))
-        return res
-    if port:
-        print("Using VLLM API")
-        eval_results = automatic_abstention(generations, port, None)
-    else:
-        # load the model
+        history_refusal = res["refusal"]
+        history_i = len(history_refusal)
+        if history_i == len(generations):
+            print(f"Skipping {res_path}")
+            return res
+        generations = generations[history_i:]
+        print('history_i', history_i, len(generations))
+
+    if not port:
         model, tokenizer = init_model("Llama-3.1-70B-Instruct", "cuda", padding_side="left", load_model=True)
         model.eval()
-        eval_results = automatic_abstention(generations, model, tokenizer)
-    
-    res = {
-        'refusal': eval_results,
-        'refusal_rate': sum(eval_results)/len(eval_results)
-    }
-    # save the results
-    with open(res_path, 'w') as f:
-        json.dump(res, f, indent=4)
+
+    # save every 100
+    for i in range(0, len(generations), 100):
+        batch_generations = generations[i:i+100]
+        if port:
+            print("Using VLLM API")
+            batch_eval_results = automatic_abstention(batch_generations, port, None)
+        else:
+            # load the model
+            batch_eval_results = automatic_abstention(batch_generations, model, tokenizer)
+
+        history_refusal += batch_eval_results
+
+        res = {
+            'refusal': history_refusal,
+            'refusal_rate': sum(history_refusal)/len(history_refusal)
+        }
+        # save the results
+        with open(res_path, 'w') as f:
+            json.dump(res, f, indent=4)
     return res

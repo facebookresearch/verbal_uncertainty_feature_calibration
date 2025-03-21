@@ -1,5 +1,5 @@
 """Compute uncertainty measures after generating answers."""
-# /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/compute_uncertainty_measures.py
+# /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/compute_py
 from collections import defaultdict
 import logging
 import os
@@ -9,19 +9,16 @@ import jsonlines
 
 import sys
 
-current_path = os.getcwd()
-root_path = os.path.abspath(os.path.join(current_path, os.pardir))
-from sem_uncertainty.utils.semantic_entropy import EntailmentLlama, EntailmentVLLM, cluster_assignment_entropy, get_semantic_ids
-from sem_uncertainty.utils import utils
-
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
+sys.path.append(f'{root_path}/sem_uncertainty/')
+from uncertainty.semantic_entropy import get_semantic_ids, cluster_assignment_entropy, EntailmentLlama, EntailmentVLLM
+from uncertainty import utils
 import torch
 import argparse
 # set seed
 torch.manual_seed(42)
 np.random.seed(42)
-
-
-
 from tqdm import tqdm
 utils.setup_logger()
 
@@ -30,7 +27,7 @@ def main(args):
     split = args.split
     model_name  = args.model_name
 
-    output_base_dir = f"{root_dir}/sem_uncertainty/outputs/{dataset}/sentence/{model_name}"
+    output_base_dir = f"{root_path}/sem_uncertainty/outputs/{dataset}/sentence/{model_name}"
     input_path = f"{output_base_dir}/{split}_1.0.jsonl"
     print('input_path', input_path)
     assert not os.path.isdir(input_path)

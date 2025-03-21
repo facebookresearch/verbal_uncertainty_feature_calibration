@@ -1,16 +1,16 @@
 import submitit
 import os
-import datetime
 import argparse
-import yaml
 import re
-
+home_path = os.path.expanduser("~")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 
 class Trainer:
     def __init__(self, output_dir, word_size, config):
-        self.cwd = "/private/home/ziweiji/Hallu_Det/probe"
+        self.cwd = current_dir
         self.conda_env_name = "detect"
-        self.conda_path = "/private/home/ziweiji/anaconda3"
+        self.conda_path =  f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
         self.word_size = word_size
@@ -52,7 +52,7 @@ python --version
 echo "Using torchrun:"
 which torchrun
 
-python -m torch.distributed.run --nproc_per_node=8 /private/home/ziweiji/Hallu_Det/probe/train_ff_multilayers_regressor_trainer.py \\
+python -m torch.distributed.run --nproc_per_node=8 {root_path}/probe/train_ff_multilayers_regressor_trainer.py \\
 {args} 
 """
         # 
@@ -147,7 +147,7 @@ done
             model_path = SENT_EIGEN_MODEL_PATHS[args.dataset]
         
     layers_to_process = model_path.split('/')[-1].split("_")[-1]
-    source_dirs = [f"/private/home/ziweiji/Hallu_Det/datasets/{args.dataset}/{args.internal_model_name}/"]
+    source_dirs = [f"{root_path}/datasets/{args.dataset}/{args.internal_model_name}/"]
     data_paths = []
     for d in source_dirs:
         data_paths.append(d+"{split}.csv")

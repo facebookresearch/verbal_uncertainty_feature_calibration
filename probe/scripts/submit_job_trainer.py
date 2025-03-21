@@ -1,16 +1,17 @@
 import submitit
 import os
-import datetime
 import argparse
-import yaml
 import re
+home_path = os.path.expanduser("~")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 
 
 class Trainer:
     def __init__(self, output_dir, word_size, config):
-        self.cwd = "/private/home/ziweiji/Hallu_Det/probe"
+        self.cwd = current_dir
         self.conda_env_name = "detect"
-        self.conda_path = "/private/home/ziweiji/anaconda3"
+        self.conda_path =  f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
         self.word_size = word_size
@@ -54,7 +55,7 @@ which torchrun
 
 export WANDB_PROJECT=probe
 OMP_NUM_THREADS=16 \\
-python -m torch.distributed.run --nproc_per_node=8 /private/home/ziweiji/Hallu_Det/probe/train_ff_multilayers_regressor_trainer.py \\
+python -m torch.distributed.run --nproc_per_node=8 {root_path}/probe/train_ff_multilayers_regressor_trainer.py \\
 --output_dir "{self.output_dir}" {args} 
 """
         # 
@@ -72,38 +73,17 @@ python -m torch.distributed.run --nproc_per_node=8 /private/home/ziweiji/Hallu_D
 def load_config(args):
     """
 
-for D in 'tivia_qa' 'nq_open' 'pop_qa'
+#  1e-3 5e-3 1e-4 5e-4 1e-5 5e-5
+
+for D in 'trivia_qa' 'nq_open' 'pop_qa'
 do
 for L in "range(10,20)" "range(5,20)"
 do
 for U in ling_uncertainty
 do
-for LR in 1e-3 5e-3 1e-4 5e-4 1e-5 5e-5 1e-2 5e-2
+for MODEL in "Meta-Llama-3.1-8B-Instruct" 
 do
-python scripts/submit_job_trainer.py \
---dataset $D \
---model_type "LinearRegressor" \
---layers_to_process $L \
---label_name $U \
---learning_rate $LR \
---save_cache "only_question_last_activations"
-
-done
-done
-done
-done
-
-
-#  1e-3 5e-3 1e-4 5e-4 1e-5 5e-5
-for D in 'trivia_qa' 'nq_open' 'pop_qa'
-do
-for L in "range(10,15)" "range(5,15)" "range(10,20)" "range(5,25)"
-do
-for U in sentence_semantic_entropy
-do
-for MODEL in "Qwen2.5-7B-Instruct" 
-do
-for LR in 1e-2 5e-2
+for LR in 0.05 0.01 0.005 0.001 0.0005 0.0001
 do
 python ~/Hallu_Det/probe/scripts/submit_job_trainer.py \
 --dataset $D \
@@ -119,16 +99,9 @@ done
 done
 done
 
-
- 5e-5 1e-4 5e-4 1e-3 5e-3 1e-2 5e-2
-
     """
 
-    if args.internal_model_name == 'Meta-Llama-3.1-8B-Instruct':
-        source_dirs = [f"/private/home/ziweiji/Hallu_Det/datasets/{args.dataset}/sampled/"]
-    else:
-        source_dirs = [f"/private/home/ziweiji/Hallu_Det/datasets/{args.dataset}/{args.internal_model_name}/"]
-
+    source_dirs = [f"{root_path}/datasets/{args.dataset}/{args.internal_model_name}/"]
     data_paths = []
     for d in source_dirs:
         data_paths.append(d+"{split}.csv")
@@ -200,25 +173,20 @@ def parse_args():
     return parser.parse_args()
 
 
-    
 def get_run_output_dir(args):
     print("get_run_output_dir args", args)
     model_type = args['model_type']
     label_name = args['label_name']
     lr = args['learning_rate']
-    save_cache = args['save_cache']
     layers_to_process = args['layers_to_process']
-    # "/home/ziweiji/Hallu_Det/datasets/"$DATA"/"$DATASPLIT
+    # "datasets/"$DATA"/"$DATASPLIT
     source_dirs = args['source_dirs'].split(" ")
     datatset = []
     for source_dir in source_dirs:
         datatset.append(source_dir.split("/")[-3])
     datatset = '_'.join(datatset)
     datasplit = source_dirs[0].split("/")[-2]
-    if 'only_question' in save_cache:
-        description = f"outputs/{model_type}_{label_name}/{datatset}_{datasplit}/{lr}_{layers_to_process}"
-    else:
-        description = f"ans_outputs/{model_type}_{label_name}/{datatset}_{datasplit}/{lr}_{layers_to_process}"
+    description = f"outputs/{model_type}_{label_name}/{datatset}_{datasplit}/{lr}_{layers_to_process}"
     # description += datetime.datetime.now().strftime("%m%d-%H%M")
     return description
 

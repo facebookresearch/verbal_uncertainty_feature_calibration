@@ -1,22 +1,19 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, set_seed
 set_seed(42)
-import pandas as pd
 from tqdm.auto import tqdm
 from os.path import join
-import numpy as np
-from ast import literal_eval
 import argparse
 
 import sys
 import os
-import json
 import jsonlines
 from uncertainty.utils import utils
-current_path = os.getcwd()
-root_path = os.path.abspath(os.path.join(current_path, os.pardir))
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = current_dir.split('sem_uncertainty')[0]
 sys.path.append(root_path)
-from verbal_uncertainty.qa_generate import load_qa_ds
+from ling_uncertainty.qa_generate import load_qa_ds
 
 def prepare_inputs(tokenizer, batch_local_prompt):
     batch_messages = []
@@ -64,8 +61,9 @@ def main_generate(args):
     qa_ds = load_qa_ds(dataset, split)
     
     #############################
-    out_root_dir = f"{args.out_root_dir}/{args.dataset}/{args.prompt_type}/{model_name}/"
+    out_root_dir = f"{root_path}/{args.out_root_dir}/{args.dataset}/{args.prompt_type}/{model_name}/"
     results_fn = f"{split}_{args.temperature}.jsonl"
+    print('out_root_dir', out_root_dir)
     os.makedirs(out_root_dir, exist_ok=True)
     if os.path.exists(join(out_root_dir, results_fn)):
         with jsonlines.open(join(out_root_dir, results_fn), 'r') as f:
@@ -95,7 +93,7 @@ def main_generate(args):
 
     for it in tqdm(range(0, len(all_example), batch_size), total=len(all_example)//batch_size):
         if (it + 1 % 10) == 0:
-            gc.collect()
+            # gc.collect()
             torch.cuda.empty_cache()
 
         batch_local_prompt = all_local_prompts[it:it+batch_size]
@@ -123,7 +121,7 @@ def main_generate(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--out_root_dir', default='/home/ziweiji/Hallu_Det/sem_uncertainty/outputs/', type=str)
+    parser.add_argument('--out_root_dir', default='sem_uncertainty/outputs/', type=str)
     parser.add_argument('--temperature', default=1.0, type=float)
     parser.add_argument('--prompt_type', default='sentence', type=str)
     parser.add_argument('--max_new_tokens', default=100, type=int)

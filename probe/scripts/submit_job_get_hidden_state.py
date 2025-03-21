@@ -1,16 +1,15 @@
 import submitit
 import os
-import datetime
 import argparse
-import yaml
 import re
-
-
+home_path = os.path.expanduser("~")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 class Trainer:
     def __init__(self, output_dir, word_size, config):
-        self.cwd = config.get("cwd", "/private/home/ziweiji/Hallu_Det/internal_information")
-        self.conda_env_name = config.get("conda_env_name", "detect")
-        self.conda_path = config.get("conda_path", "/private/home/ziweiji/anaconda3")
+        self.cwd = current_dir
+        self.conda_env_name = "detect"
+        self.conda_path =  f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
         self.word_size = word_size
@@ -68,7 +67,7 @@ for S in test train val
 do
 for MODEL in "Qwen2.5-7B-Instruct"
 do
-python /private/home/ziweiji/Hallu_Det/internal_information/scripts/submit_job_get_hidden_state.py \
+python scripts/submit_job_get_hidden_state.py \
 --source_dir $D \
 --splits $S \
 --datasplit $MODEL \
@@ -86,7 +85,7 @@ for S in test train val
 do
 for MODEL in "Qwen2.5-7B-Instruct" "Mistral-7B-Instruct-v0.3"
 do
-python /private/home/ziweiji/Hallu_Det/internal_information/scripts/submit_job_get_hidden_state.py \
+python scripts/submit_job_get_hidden_state.py \
 --source_dir $D \
 --splits $S \
 --datasplit ${MODEL}_sentence \
@@ -101,7 +100,7 @@ done
                     #pop_qa
                     #  "trivia_qa",
                     # "nq_open",
-    source_dirs = [f"/private//home/ziweiji/Hallu_Det/datasets/{d}/{args.datasplit}/" for d in source_dirs]
+    source_dirs = [f"{root_path}/datasets/{d}/{args.datasplit}/" for d in source_dirs]
     data_paths = [d+"{split}.csv" for d in source_dirs]
     data_paths = " ".join(data_paths)
     source_dirs = " ".join(source_dirs)
@@ -142,7 +141,7 @@ def parse_args():
 def get_run_output_dir(args):
     print("get_run_output_dir args", args)
     info_type = args['info_type']
-    # "/private/home/ziweiji/Hallu_Det/datasets/"$DATA"/"$DATASPLIT
+    # "datasets/"$DATA"/"$DATASPLIT
     datatset, datasplit = args['source_dirs'].split("/")[-2:]
     internal_model_name = args['internal_model_name']
     description = f"get_hidden_state/{datatset}_{datasplit}_{info_type}_{internal_model_name}/"

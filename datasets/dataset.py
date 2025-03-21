@@ -1,16 +1,14 @@
-import pickle
 import os
-cwd = "/private/home/ziweiji/Hallu_Det/"
-if not os.path.exists(cwd):
-    cwd = "/home/ziweiji/Hallu_Det/"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 import torch
 from torch.utils.data import Dataset
-import transformers
 from transformers import (
     AutoTokenizer,
 )
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+
 class HiddenLayersDataset(Dataset):
     def __init__(self, data_paths, split, 
                  layers,
@@ -41,7 +39,7 @@ class HiddenLayersDataset(Dataset):
             data_path = data_path.format(split=split)
             source = "/".join(data_path.split("/")[-3:-1]) #IDK/paired_data_rate_0.5_12000
             data = pd.read_csv(data_path, encoding="utf8")
-            data['save_path'] = f'{cwd}/datasets/{source}/{save_cache}/{split}/'
+            data['save_path'] = f'{root_path}/datasets/{source}/{save_cache}/{split}/'
             dataset.append(data)
         self.dataset = pd.concat(dataset, ignore_index=True)
         self.features = self.dataset.columns
@@ -90,7 +88,7 @@ class HiddenLayersDataset(Dataset):
         try:
             hidden_states = self.load_hidden_states(save_path)
             # hidden_states.to(torch.float32)
-            if label_name in ['ling_uncertainty',
+            if label_name in ['verbal_uncertainty',
                                'sentence_semantic_entropy',  'no_refuse_sentence_semantic_entropy', 
                               'word_semantic_entropy', 'no_refuse_word_semantic_entropy', 
                               'word_eigen', 'no_refuse_word_eigen',
@@ -151,7 +149,7 @@ class HiddenLayers_U_Dataset(HiddenLayersDataset):
 
         dataset = []
         for data_path in data_paths:
-            # /home/ziweiji/Hallu_Det/datasets/trivia_qa/refuse_paired/test.csv
+            # datasets/trivia_qa/refuse_paired/test.csv
             data_path = data_path.format(split=split)
             dataset_name = data_path.split("/")[-3]
             data = pd.read_csv(data_path, encoding="utf8")
@@ -170,16 +168,10 @@ class HiddenLayers_U_Dataset(HiddenLayersDataset):
         split = self.split
         normalize = self.normalize
         uncertainty_names = self.uncertainty_names
-        # if model_name == 'Meta-Llama-3.1-8B-Instruct':
-        #     if self.use_predicted_uncertainty:
-        #         question_path = f'{cwd}/datasets/{dataset_name}/sampled_predicted_uncertainty/{split}.csv'
-        #     else:
-        #         question_path = f'{cwd}/datasets/{dataset_name}/sampled/{split}.csv'
-        # else:
         if self.use_predicted_uncertainty:
-            question_path = f'{cwd}/datasets/{dataset_name}/{model_name}_predicted_uncertainty/{split}.csv'
+            question_path = f'{root_path}/datasets/{dataset_name}/{model_name}_predicted_uncertainty/{split}.csv'
         else:
-            question_path = f'{cwd}/datasets/{dataset_name}/{model_name}/{split}.csv'
+            question_path = f'{root_path}/datasets/{dataset_name}/{model_name}/{split}.csv'
 
         question_data = pd.read_csv(question_path)
         all_uncertainty = []

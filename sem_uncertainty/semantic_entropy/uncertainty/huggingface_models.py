@@ -1,25 +1,75 @@
-"""Implement HuggingfaceModel models."""
+"""
+MIT License
+
+Copyright (c) Meta Platforms, Inc. and affiliates.
+Copyright (c) 2024 OATML
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 import copy
 import logging
-import os
 from collections import Counter
 
-import accelerate
 import torch
-from accelerate import Accelerator
 
 from transformers import AutoTokenizer
-from transformers import AutoConfig
 from transformers import AutoModelForCausalLM
 from transformers import BitsAndBytesConfig
 from transformers import StoppingCriteria
 from transformers import StoppingCriteriaList
-from huggingface_hub import snapshot_download
 import re
+from abc import ABC, abstractmethod
+from typing import List, Text
+STOP_SEQUENCES = ['Question:', 'Context:']
 
-from uncertainty.models.base_model import BaseModel
-from uncertainty.models.base_model import STOP_SEQUENCES
+class BaseModel(ABC):
+    stop_sequences: List[Text]
 
+    @abstractmethod
+    def predict(self, input_data, temperature):
+        pass
+
+    @abstractmethod
+    def get_p_true(self, input_data):
+        pass
+
+    def get_character_start_stop_indices(self, input_data_offset, answer):
+        """Remove any output following (and including) a stop_sequence.
+
+        Some outputs start with newlines (unfortunately). We strip these, in
+        order to ensure generations with greater-than-zero length.
+        """
+        start_index = input_data_offset
+
+        # Strip zero-length generations from beginning and add to `input_data_offset`.
+        newline = '\n'
+        while answer[start_index:].startswith(newline):
+            start_index += len(newline)
+
+        # Get character index of first stop sequence
+        stop_index = len(answer)
+        for word in self.stop_sequences:
+            index = answer[start_index:].find(word)
+            if index != -1 and index + start_index < stop_index:
+                stop_index = index + start_index
+
+        return start_index, stop_index
 
 class StoppingCriteriaSub(StoppingCriteria):
     """Stop generations when they match a particular text or token."""
@@ -49,39 +99,6 @@ class StoppingCriteriaSub(StoppingCriteria):
         return False
 
 
-def remove_split_layer(device_map_in):
-    """Modify device maps s.t. individual layers are not spread across devices."""
-
-    device_map = copy.deepcopy(device_map_in)
-    destinations = list(device_map.keys())
-
-    counts = Counter(['.'.join(i.split('.')[:2]) for i in destinations])
-
-    found_split = False
-    for layer, count in counts.items():
-        if count == 1:
-            continue
-
-        if found_split:
-            # Only triggers if we find more than one split layer!
-            raise ValueError(
-                'More than one split layer.\n'
-                f'Currently at layer {layer}.\n'
-                f'In map: {device_map_in}\n'
-                f'Out map: {device_map}\n')
-
-        logging.info(f'Split layer is {layer}.')
-
-        # remove split for that layer
-        for name in list(device_map.keys()):
-            if name.startswith(layer):
-                print(f'pop {name}')
-                device = device_map.pop(name)
-
-        device_map[layer] = device
-        found_split = True
-
-    return device_map
 
 
 class HuggingfaceModel(BaseModel):
@@ -460,33 +477,3 @@ class HuggingfaceModel(BaseModel):
             all_return_values.append((sliced_answer, log_likelihoods, hidden_states))
         assert len(all_return_values) == len(batch_input_data)*num_return_sequences
         return all_return_values
-
-    def get_p_true(self, input_data):
-        """Get the probability of the model anwering A (True) for the given input"""
-
-        input_data += ' A'
-        tokenized_prompt_true = self.tokenizer(input_data, return_tensors='pt').to('cuda')['input_ids']
-
-        target_ids_true = tokenized_prompt_true.clone()
-        # Set all target_ids except the last one to -100.
-        target_ids_true[0, :-1] = -100
-
-        with torch.no_grad():
-            model_output_true = self.model(tokenized_prompt_true, labels=target_ids_true)
-
-        loss_true = model_output_true.loss
-
-        return -loss_true.item()
-
-    def get_perplexity(self, input_data):
-        """Get the probability of the model anwering A (True) for the given input"""
-
-        tokenized_data = self.tokenizer(input_data, return_tensors='pt').to('cuda')['input_ids']
-
-        with torch.no_grad():
-            model_output_true = self.model(tokenized_data, labels=tokenized_data)
-
-        perplexity = - model_output_true.loss.item()
-
-
-        return perplexity

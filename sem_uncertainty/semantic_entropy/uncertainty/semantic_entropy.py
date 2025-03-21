@@ -1,4 +1,27 @@
-"""Implement semantic entropy."""
+"""
+MIT License
+
+Copyright (c) Meta Platforms, Inc. and affiliates.
+Copyright (c) 2024 OATML
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 import os
 import pickle
 import logging
@@ -10,9 +33,7 @@ import openai
 import torch
 import torch.nn.functional as F
 
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-
-from uncertainty.models.huggingface_models import HuggingfaceModel
+from uncertainty.huggingface_models import HuggingfaceModel
 from uncertainty.utils import openai as oai
 from uncertainty.utils import utils
 import collections
@@ -26,10 +47,8 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 class BaseEntailment:
-
     def save_prediction_cache(self):
         pass
-
 
 class EntailmentLLM(BaseEntailment):
 
@@ -128,6 +147,8 @@ class EntailmentLLM(BaseEntailment):
                 out_list.append(1)
         return out_list
 
+
+
 class EntailmentVLLM(EntailmentLLM):
     def __init__(self, entailment_cache_id, entailment_cache_only, name, prompt_type='default'):
         super().__init__(entailment_cache_id, entailment_cache_only)
@@ -193,12 +214,6 @@ class EntailmentLlama(EntailmentLLM):
         all_return_values = self.model.batch_predict(batch_prompts, temperature, num_return_sequences=1, return_full=False, return_latent=False, output_hidden_states=False)
         all_return_values = [x[0] for x in all_return_values]
         return all_return_values
-
-def context_entails_response(context, responses, model):
-    votes = []
-    for response in responses:
-        votes.append(model.check_implication(context, response))
-    return 2 - np.mean(votes)
 
 
 def get_semantic_ids(strings_list, model, strict_entailment=False, example=None):
@@ -288,48 +303,6 @@ def get_semantic_ids(strings_list, model, strict_entailment=False, example=None)
     assert -1 not in semantic_set_ids
     return semantic_set_ids
 
-
-def logsumexp_by_id(semantic_ids, log_likelihoods, agg='sum'):
-    """Sum probabilities with the same semantic id.
-
-    Log-Sum-Exp because input and output probabilities in log space.
-    """
-    unique_ids = sorted(list(set(semantic_ids)))
-    assert unique_ids == list(range(len(unique_ids)))
-    log_likelihood_per_semantic_id = []
-
-    for uid in unique_ids:
-        id_indices = [pos for pos, x in enumerate(semantic_ids) if x == uid]
-        id_log_likelihoods = [log_likelihoods[i] for i in id_indices]
-        if agg == 'sum':
-            logsumexp_value = np.log(np.sum(np.exp(id_log_likelihoods))) - 5.0
-        elif agg == 'sum_normalized':
-            log_lik_norm = id_log_likelihoods - np.log(np.sum(np.exp(log_likelihoods)))
-            logsumexp_value = np.log(np.sum(np.exp(log_lik_norm)))
-        elif agg == 'mean':
-            logsumexp_value = np.log(np.mean(np.exp(id_log_likelihoods)))
-        else:
-            raise ValueError
-        log_likelihood_per_semantic_id.append(logsumexp_value)
-
-    return log_likelihood_per_semantic_id
-
-
-def predictive_entropy(log_probs):
-    """Compute MC estimate of entropy.
-
-    `E[-log p(x)] ~= -1/N sum_i log p(x_i)` where i are the is the sequence
-    likelihood, i.e. the average token likelihood.
-    """
-
-    entropy = -np.sum(log_probs) / len(log_probs)
-
-    return entropy
-
-
-def predictive_entropy_rao(log_probs):
-    entropy = -np.sum(np.exp(log_probs) * log_probs)
-    return entropy
 
 
 def cluster_assignment_entropy(semantic_ids):

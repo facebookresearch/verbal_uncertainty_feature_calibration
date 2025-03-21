@@ -59,9 +59,9 @@ python /private/home/ziweiji/Hallu_Det/ling_uncertainty/qa_generate.py \\
 def load_config(args):
     """
     
-for D in 'pop_qa'
+for D in 'trivia_qa' 'nq_open'
 do
-for SPLIT in 'test'
+for SPLIT in 'train' 'val' 'test'
 do
 python /private/home/ziweiji/Hallu_Det/ling_uncertainty/scripts/submit_job_generate.py \
 --results_dir /private/home/ziweiji/Hallu_Det/ling_uncertainty/outputs_10 \
@@ -69,7 +69,7 @@ python /private/home/ziweiji/Hallu_Det/ling_uncertainty/scripts/submit_job_gener
 --max_new_tokens 100 \
 --dataset $D \
 --split $SPLIT \
---model_name "AlistairPullen/llama-3.1-8B-grpo" &
+--model_name "ymcki/Llama-3.1-8B-GRPO-Instruct" &
 
 done
 done

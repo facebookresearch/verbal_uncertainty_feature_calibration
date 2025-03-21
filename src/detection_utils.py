@@ -5,12 +5,8 @@ from sklearn.metrics import  f1_score, accuracy_score, log_loss, precision_score
 import pandas as pd
 import json
 import os
-if os.path.exists('/home/ziweiji/Hallu_Det/'):
-    root_path = '/home/ziweiji/Hallu_Det/'
-elif os.path.exists('/private/home/ziweiji/Hallu_Det/'):
-    root_path = '/private//home/ziweiji/Hallu_Det/'
-else:
-    assert False
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 
 # 查找最佳阈值
 def get_threshold(thresholds, tpr, fpr):
@@ -18,27 +14,6 @@ def get_threshold(thresholds, tpr, fpr):
     index = np.argmax(gmean)
     thresholdOpt = round(thresholds[index], ndigits = 4)
     return thresholdOpt
-
-
-def VisAUROC(tpr, fpr, AUROC, method_name, file_name="CoQA"):
-    if "coqa" in file_name:
-        file_name = "CoQA"
-    if "nq" in file_name:
-        file_name = "NQ"
-    if "trivia" in file_name:
-        file_name = "TriviaQA"
-    if "SQuAD" in file_name:
-        file_name = "SQuAD"
-    plt.plot(fpr, tpr, label="AUC-{}=".format(method_name)+str(round(AUROC,3)))
-    plt.xlabel("False Positive Rate", fontsize=15)
-    plt.ylabel("True Positive Rate", fontsize=15)
-    plt.xticks(fontsize=15)
-    plt.yticks(fontsize=15)
-    plt.title('ROC Curve on {} Dataset'.format(file_name), fontsize=15)
-    plt.legend(loc="lower right", fontsize=10)
-    # plt.savefig("./Figure/AUROC_{}.png".format(file_name), dpi=300, bbox_inches='tight')
-    plt.show()
-
 
 def sigmoid(x, k):
     return 1 / (1 + np.exp(-k * x))
@@ -130,10 +105,15 @@ LLAMA_PROBE_PATHS = {
     #     "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_sampled/0.005_range(11,13)",
     #     "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_sampled/0.005_range(11,13)",
     # },
+    # "ling_uncertainty": {
+    #     "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_sampled/0.0005_range(5,20)",
+    #     "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_sampled/0.001_range(10,20)",
+    #     "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_sampled/0.001_range(5,20)",
+    # },
     "ling_uncertainty": {
-        "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_sampled/0.0005_range(5,20)",
-        "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_sampled/0.001_range(10,20)",
-        "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_sampled/0.001_range(5,20)",
+        "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_Meta-Llama-3.1-8B-Instruct/0.001_range(5,20)",
+        "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_Meta-Llama-3.1-8B-Instruct/0.001_range(10,20)",
+        "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_Meta-Llama-3.1-8B-Instruct/0.001_range(10,20)",
     },
     "word_semantic_entropy": {
         "trivia_qa": "outputs/LinearRegressor_word_semantic_entropy/trivia_qa_sampled/0.005_range(12,14)",
@@ -151,9 +131,9 @@ LLAMA_PROBE_PATHS = {
     #     "pop_qa": "outputs/LinearRegressor_sentence_semantic_entropy/pop_qa_sampled/0.005_range(12,14)",
     # },
     "sentence_semantic_entropy": {
-        "trivia_qa": "outputs/LinearRegressor_sentence_semantic_entropy/trivia_qa_sampled/0.0005_range(10,20)",
-        "nq_open": "outputs/LinearRegressor_sentence_semantic_entropy/nq_open_sampled/0.001_range(10,20)",
-        "pop_qa": "outputs/LinearRegressor_sentence_semantic_entropy/pop_qa_sampled/0.001_range(5,25)",
+        "trivia_qa": "outputs/LinearRegressor_sentence_semantic_entropy/trivia_qa_Meta-Llama-3.1-8B-Instruct/0.0005_range(10,20)",
+        "nq_open": "outputs/LinearRegressor_sentence_semantic_entropy/nq_open_Meta-Llama-3.1-8B-Instruct/0.001_range(10,20)",
+        "pop_qa": "outputs/LinearRegressor_sentence_semantic_entropy/pop_qa_Meta-Llama-3.1-8B-Instruct/0.001_range(5,25)",
     },
     "sentence_eigen": {
         "trivia_qa": "outputs/LinearRegressor_sentence_eigen/trivia_qa_sampled/0.005_range(12,14)",
@@ -208,10 +188,7 @@ def load_predicted_test_data(model_name, dataset, features):
             
     all_features_preds = np.array(all_features_preds).T
 
-    if model_name == 'Meta-Llama-3.1-8B-Instruct':
-        input_file2 = f"{root_path}/datasets/{dataset}/sampled/test.csv"
-    else:
-        input_file2 = f"{root_path}/datasets/{dataset}/{model_name}/test.csv"
+    input_file2 = f"{root_path}/datasets/{dataset}/{model_name}/test.csv"
     
     data2 = pd.read_csv(input_file2)
     assert len(data2) == len(all_features_preds)

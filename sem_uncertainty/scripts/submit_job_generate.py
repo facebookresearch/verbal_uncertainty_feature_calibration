@@ -2,14 +2,14 @@ import submitit
 import os
 import datetime
 import argparse
-import yaml
-import re
-
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(os.path.dirname(current_dir))
+home_path = os.path.expanduser("~")
 class Trainer:
     def __init__(self, output_dir, word_size, config):
-        self.cwd = config.get("cwd", "/home/ziweiji/Hallu_Det/sem_uncertainty")
-        self.conda_env_name = config.get("conda_env_name", "detect")
-        self.conda_path = config.get("conda_path", "/home/ziweiji/miniconda3")
+        self.cwd = current_dir
+        self.conda_env_name = "detect"
+        self.conda_path = f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
         self.word_size = word_size
@@ -42,7 +42,7 @@ echo "Python version: $(python --version)"
 echo "Using torchrun: $(which torchrun)"
 echo "Conda envs: $(conda env list)"
 
-python /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/{task}.py \\
+python {root_path}/sem_uncertainty/semantic_entropy/{task}.py \\
     {args}
         """
         print(cmd)
@@ -58,60 +58,16 @@ python /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/{task}.py \\
 
 def load_config(args):
     """
-for D in 'nq_open'
+
+for D in 'trivia_qa' 'nq_open' 'pop_qa' 
 do
-for SPLIT in "train" 'test' 'val'
+for SPLIT in 'train' 'val' 'test'
 do
-python /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/eval_acc.py \
---dataset $D \
---split $SPLIT \
---model_name Mistral-7B-Instruct-v0.3 \
---port 'http://cr1-h100-p548xlarge-275:8000/v1' &
-done
-done
-
-Qwen2.5-7B-Instruct Mistral-7B-Instruct-v0.3
-
-tmux 0 trivia_qa Qwen2 348
-tmux 1 trivia_qa Mistral 381
-
-tmux 2 nq_open Qwen2 552
-tmux 3 nq_open Mistral 275
-
-tmux 4 pop_qa Qwen2 188
-tmux 5 pop_qa Mistral 376
-
-
-
-
-for D in 'trivia_qa' 'nq_open' 'pop_qa'
+for MODEL in "Meta-Llama-3.1-8B-Instruct"
 do
-for SPLIT in "train" 'test' 'val'
+for T in 0.1
 do
-python /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/compute_semantic_entropy.py \
---dataset $D \
---prompt_type $T \
---split $SPLIT \
---port 'http://cr1-h100-p548xlarge-87:8000/v1'
-
-done
-done
-done
-
-
-git add /home/ziweiji/Hallu_Det/sem_uncertainty/outputs/*/sentence/*-Instruct*/* -f
-git add /home/ziweiji/Hallu_Det/sem_uncertainty/outputs/*/sentence/*-Instruct/* -f
-
-
-for D in 'nq_open' 'pop_qa' 'trivia_qa'
-do
-for SPLIT in 'train'
-do
-for MODEL in "Qwen2.5-7B-Instruct" "Mistral-7B-Instruct-v0.3"
-do
-for T in 1.0
-do
-python /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/scripts/submit_job_generate2.py \
+python {root_path}/sem_uncertainty/semantic_entropy/scripts/submit_job_generate.py \
 --dataset $D \
 --prompt_type "sentence" \
 --split $SPLIT \
@@ -122,6 +78,77 @@ done
 done
 done
 done
+
+
+for MODEL in "Meta-Llama-3.1-8B-Instruct"
+do
+for D in 'trivia_qa' 'nq_open' 'pop_qa'
+do
+for SPLIT in "train"
+do
+python {root_path}/sem_uncertainty/semantic_entropy/eval_acc.py \
+--dataset $D \
+--split $SPLIT \
+--model_name $MODEL \
+--port 'http://learnfair6012:8000/v1' &
+done
+done
+done
+
+Qwen2.5-7B-Instruct Mistral-7B-Instruct-v0.3
+
+
+
+for MODEL in "Meta-Llama-3.1-8B-Instruct"
+do
+for D in 'trivia_qa' 'nq_open' 'pop_qa'
+do
+for SPLIT in train
+do
+python get_refusal_rate.py \
+--dataset $D \
+--split $SPLIT \
+--model_name $MODEL \
+--port 'http://learnfair6004:8000/v1' &
+
+done
+done
+done
+
+for MODEL in "Meta-Llama-3.1-8B-Instruct"
+do
+for D in 'trivia_qa'
+do
+for SPLIT in train
+do
+python eval_all_responses.py \
+--dataset $D \
+--split $SPLIT \
+--model_name $MODEL \
+--port 'http://learnfair6004:8000/v1' &
+
+done
+done
+done
+    parser.add_argument('--prompt_type', type=str, choices=["default", 'ignore_lu'])
+
+
+
+for D in 'trivia_qa' 'nq_open' 'pop_qa'
+do
+for SPLIT in "train" 'test' 'val'
+do
+python {root_path}/sem_uncertainty/semantic_entropy/compute_semantic_entropy.py \
+--dataset $D \
+--prompt_type $T \
+--split $SPLIT \
+--port 'http://cr1-h100-p548xlarge-87:8000/v1'
+
+done
+done
+done
+
+
    """
     
     # Qwen2.5-7B-Instruct 'Mistral-7B-Instruct-v0.3'
@@ -164,13 +191,15 @@ if __name__ == "__main__":
     nodes = 1
     executor = submitit.AutoExecutor(folder=output_dir)
     executor.update_parameters(
+        name=config['training_args']['task'],
         mem_gb=700,
         gpus_per_node=8,
         cpus_per_task=80,
         nodes=nodes,
         timeout_min=4320,
-        slurm_qos="embodiment_shared",
-        slurm_account="multimodal-reasoning",
+        slurm_partition="learnfair",
+        # slurm_constraint='ampere80gb', #'ampere80gb',volta32gb
+        slurm_exclude='learnfair6000,learnfair6001',
     )
 
     # Submit the job

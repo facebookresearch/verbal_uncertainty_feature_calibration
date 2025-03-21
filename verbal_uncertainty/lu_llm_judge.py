@@ -1,20 +1,18 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, set_seed
 set_seed(42)
-import pandas as pd
 from tqdm.auto import tqdm
 from os.path import join
-import numpy as np
-from ast import literal_eval
 import argparse
-import itertools
-import pickle
-from datasets import load_dataset
 import json
 import jsonlines
 import os
-
 import sys
+if os.path.exists("/private/home/ziweiji/"):
+    root_path = '/private/home/ziweiji/Hallu_Det/'
+else:
+    root_path = '/home/ziweiji/Hallu_Det/'
+sys.path.append(f'{root_path}/ling_uncertainty')
 from prompts import DECISIVENESS_SYS_PROMPT
 from tqdm.contrib.concurrent import thread_map
 import openai

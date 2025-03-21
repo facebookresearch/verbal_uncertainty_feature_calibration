@@ -30,18 +30,17 @@ import evaluate
 import datasets
 import numpy as np
 import sys
-cwd = "/private/home/ziweiji/Hallu_Det/"
-if not os.path.exists(cwd):
-    cwd = "/home/ziweiji/Hallu_Det/"
-sys.path.append(cwd)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
+sys.path.append(root_path)
 
 from src.utils import process_layers_to_process
-from src.dataset import HiddenLayersDataset
+from Hallu_Det.datasets.dataset import HiddenLayersDataset
 
 import pandas as pd
 import json
 
-from  src.train_utils import load_regressor_model
+from  Hallu_Det.others.src.train_utils import load_regressor_model
 
 import random
 random.seed(42)

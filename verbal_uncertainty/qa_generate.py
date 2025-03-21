@@ -9,9 +9,13 @@ from ast import literal_eval
 import argparse
 import sys
 import os
-current_path = os.getcwd()
-root_path = os.path.abspath(os.path.join(current_path, os.pardir))
-from prompts import get_qa_system_prompt
+if os.path.exists('/home/ziweiji/'):
+    root_path = '/home/ziweiji/Hallu_Det'
+else:
+    root_path = '/private/home/ziweiji/Hallu_Det'
+sys.path.append(root_path)
+
+from ling_uncertainty.prompts import get_qa_system_prompt
 try:
     from lu_llm_judge import judge_main
 except:
