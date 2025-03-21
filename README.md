@@ -1,22 +1,95 @@
-# Mechanistic Uncertainty Calibration
+# Calibrating Verbal Uncertainty as a Linear Feature to Reduce Hallucinations
+Ziwei Ji*, Lei Yu*, Yeskendir Koishekenov, Yejin Bang, Anthony Hartshorn, Alan Schelten, Cheng Zhang, Pascale Fung, Nicola Cancedda
 
-These files were deleted from the repository as they should be downloaded independently rather than redistributed:
+[![arXiv](https://img.shields.io/badge/arXiv-2406.15927-b31b1b.svg)](https://arxiv.org/pdf/2503.14477)
 
-* /data/KUQ/KUQ.ncan.dev.json
-* /data/KUQ/KUQ.ncan.test.json
-* /data/KUQ/KUQ.ncan.train.json
-* /data/SelfAware/SelfAware.ncan.dev.json
-* /data/SelfAware/SelfAware.ncan.test.json
-* /data/SelfAware/SelfAware.ncan.train.json
-
-## Intro: TODO
-
-
-
-## Steps for reproducing results
-
-1. Run qa-generate.py through qa-generate.sh after updating any hard-wired default paths (e.g. for the KUQ and SelfAware datasets and/or passing the correct --results_dir argument in qa-generate.sh. Ensure that the sbatch --array argument in qa-generate.sh matches in size the total number of triples (model,dataset,chunk) as specified in qa-generate.py variables model_names, dataset_names, and n_chunk. E.g. 1 model x 2 datasets x 10 chunks --> --array=0-19
-
+# Installation and Requirements
 ```
-sbatch qa-generate.sh
+git clone git@github.com:fairinternal/mechanistic_uncertainty_calibration.git
+cd mechanistic_uncertainty_calibration
+pip install -r requirements.txt
+```
+
+# Dataset Preparation
+Download and process datasets using datasets/build_data.ipynb
+
+## Semantic Uncertainty Calculation
+1. Sample multiple answers 
+```
+bash sem_uncertainty/scripts/generate.sh
+```
+2. Calcualte semantic entropy
+```
+bash sem_uncertainty/scripts/run_compute_uncertainty.sh
+```
+
+## Verbal Uncertainty Calculation
+1. Sample multiple answers
+```
+bash verbal_uncertainty/scripts/generate.sh
+```
+2. Set up [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#quickstart-online) sever to infer LLM
+```
+python src/vllm-all.py
+```
+
+3. Use LLM to judge the verbal uncertainty level
+```
+bash verbal_uncertainty/scripts/judge.sh
+```
+4. Merge the generated answers and calcualted uncertaities using datasets/merge.ipynb
+
+
+# Verbal Uncertainty Feature
+## Feature Extraction
+```
+bash calibration/scripts/universal_luf.sh
+```
+
+## Causal Validation 
+```
+bash calibration/scripts/ablation.sh
+calibration/hedging-causal-validate.ipynb
+```
+
+# Hallucination Detector
+Train LogisticRegression(LR)-based detector based on uncertainties
+```
+bash detection/scripts/detection.sh
+```
+
+##  Uncertainty Probe
+Train uncrtainty probes to predict uncertainties without multi-sampling.
+1. Obtain the hidden states of questions
+```
+bash probe/scripts/get_hidden_state.sh
+```
+2. Train the regressor probe given hidden state to predict the uncertainties (verbal uncertainty and semantic entropy)
+```
+bash probe/scripts/trainer.sh
+```
+
+# Uncertainty Calibration for Hallucination Mitigation
+## Generation with inference-time intervention
+calibrate verbal uncertainty with semantic entropy to mitigate hallucinations
+```
+bash calibration/scripts/semantic_control.sh
+```
+## Evaluation
+```
+bash calibration/scripts/run_eval.sh
+```
+
+# License
+The majority of mechanistic_uncertainty_calibration is licensed under CC-BY-NC, however portions of the project are available under separate license terms: OATML is licensed under the MIT license.
+
+
+# Citation
+```
+@article{ji2025calibrating,
+  title={Calibrating Verbal Uncertainty as a Linear Feature to Reduce Hallucinations},
+  author={Ziwei Ji, Lei Yu, Yeskendir Koishekenov, Yejin Bang, Anthony Hartshorn, Alan Schelten, Cheng Zhang, Pascale Fung, Nicola Cancedda},
+  journal={arXiv preprint arXiv:2503.14477},
+  year={2025}
+}
 ```
