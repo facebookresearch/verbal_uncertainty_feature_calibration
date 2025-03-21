@@ -44,12 +44,9 @@ __pycache__
 .ipynb_checkpoints
 archived
 qa-eval-results/
-<<<<<<< HEAD
-activation-cache
-=======
 activation-cache
 .DS_Store
 analysis.ipynb
 best.ipynb
 */scripts/*2.*
->>>>>>> origin/ACL_submission
+LUF
