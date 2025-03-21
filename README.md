@@ -1,5 +1,6 @@
 # Calibrating Verbal Uncertainty as a Linear Feature to Reduce Hallucinations
 Ziwei Ji*, Lei Yu*, Yeskendir Koishekenov, Yejin Bang, Anthony Hartshorn, Alan Schelten, Cheng Zhang, Pascale Fung, Nicola Cancedda
+
 [![arXiv](https://img.shields.io/badge/arXiv-2406.15927-b31b1b.svg)](https://arxiv.org/pdf/2503.14477)
 
 # Installation and Requirements
@@ -12,7 +13,7 @@ pip install -r requirements.txt
 # Dataset Preparation
 Download and process datasets using datasets/build_data.ipynb
 
-# Semantic Uncertainty Calculation
+## Semantic Uncertainty Calculation
 1. Sample multiple answers 
 ```
 bash sem_uncertainty/scripts/generate.sh
@@ -54,10 +55,11 @@ calibration/hedging-causal-validate.ipynb
 # Hallucination Detector
 Train LogisticRegression(LR)-based detector based on uncertainties
 ```
-bash detection/scripts/LR.sh
+bash detection/scripts/detection.sh
 ```
 
-#  Uncertainty Probe
+##  Uncertainty Probe
+Train uncrtainty probes to predict uncertainties without multi-sampling.
 1. Obtain the hidden states of questions
 ```
 bash probe/scripts/get_hidden_state.sh
