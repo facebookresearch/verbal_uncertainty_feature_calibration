@@ -39,10 +39,9 @@ from huggingface_models import HuggingfaceModel
 import openai as oai
 import logging
 import hashlib
-from tenacity import (retry, stop_after_attempt,  # for exponential backoff
-                      wait_random_exponential)
-
-from openai import OpenAI
+import torch
+import numpy as np
+import matplotlib.pyplot as plt
 
 PROMPTS = {
     'default': "Answer the following question as briefly as possible.\n",
@@ -427,3 +426,26 @@ def get_metric(metric):
 
 def md5hash(string):
     return int(hashlib.md5(string.encode('utf-8')).hexdigest(), 16)
+
+# Best split for SE binarization. threshold
+def best_split(ents, label="Dx"):
+    """
+    Identify best split for minimizing reconstruction error via low and high SE mean estimates,
+    as discussed in Section 4. Binarization of paper (ArXiv: 2406.15927)
+    """
+    splits = np.linspace(ents.min(), ents.max(), 100)
+    split_mses = []
+    for split in splits:
+        low_idxs, high_idxs = ents < split, ents >= split
+    
+        low_mean = np.mean(ents[low_idxs])
+        high_mean = np.mean(ents[high_idxs])
+    
+        mse = np.sum((ents[low_idxs] - low_mean)**2) + np.sum((ents[high_idxs] - high_mean)**2)
+        mse = np.sum(mse)
+    
+        split_mses.append(mse)
+    
+    split_mses = np.array(split_mses)
+    # plt.plot(splits, split_mses, label=label)
+    return splits[np.argmin(split_mses)]

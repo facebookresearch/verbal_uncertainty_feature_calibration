@@ -1,0 +1,138 @@
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, set_seed
+set_seed(42)
+import pandas as pd
+from tqdm.auto import tqdm
+import argparse
+import json
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(os.path.dirname(current_dir))
+sys.path.append(root_path)
+from verbal_uncertainty.prompts import DECISIVENESS_SYS_PROMPT
+from verbal_uncertainty.vu_llm_judge import prepare_inputs, get_batch_results
+
+def prepare_inputs(example):
+    question = example['question']
+    answer = example['most_likely_answer']
+    messages = [
+        {"role": "system", "content": DECISIVENESS_SYS_PROMPT},
+        {"role": "user", "content": f"Question: {question} Proposed answer: {answer}"},
+    ]
+    return messages
+
+
+def judge_main(args):
+    batch_size = args.batch_size
+    max_alpha = args.max_alpha
+    model_name = args.model_name
+    prompt_type = args.prompt_type
+    dataset = args.dataset
+    split = args.split
+    iti_method = args.iti_method
+    str_process_layers = args.str_process_layers
+    
+    ##### load model generated answers #####
+    if args.use_predicted:
+        output_base_dir = f"{root_path}/calibration/predicted_outputs/{dataset}/{model_name}/{prompt_type}/{split}"
+    else:
+        output_base_dir = f"{root_path}/calibration/outputs/{dataset}/{model_name}/{prompt_type}/{split}"
+
+    if 'old' in prompt_type:
+        input_path = f"{root_path}/calibration/outputs/{dataset}/Meta-Llama-3.1-8B-Instruct/uncertainty_old/{split}/with_vufi_2_range(15,32)_1.0.jsonl"
+    else:
+        if split == 'test': # semantic control
+            if iti_method in [0, 2]:
+                input_path = f'{output_base_dir}/with_vufi_{iti_method}_{str_process_layers}_{max_alpha}.jsonl'
+            elif iti_method == 1:
+                input_path = f'{output_base_dir}/with_vufi_{iti_method}_trivia_qa_{str_process_layers}_{max_alpha}.jsonl'
+            
+
+    results_fn = input_path.replace("with_vufi", 'vu_most_likely')[:-1]
+    print('input_path', input_path)
+    qa_ds = pd.read_json(input_path, lines=True)
+    print("len(qa_ds)", len(qa_ds))
+    ##########################################
+    verbal_uncertain_scores = {} # question: score
+    if os.path.exists(results_fn):
+        try:
+            with open(results_fn, 'r') as f:
+                verbal_uncertain_scores = json.load(f)
+        except Exception as e:
+            print('Error loading', results_fn, e)
+    
+    ##### get judged decisiveness scores and extracted assertions #####
+    all_message = []
+    all_question = []
+    for i, example in qa_ds.iterrows():
+        if not example["most_likely_answer"]:
+            question = example['question']
+            verbal_uncertain_scores[question] = -1
+            continue
+        if example['question'] in verbal_uncertain_scores:
+            continue
+        input_text = prepare_inputs(example)
+        all_message.append(input_text)
+        all_question.append(example['question'])
+        
+    print('len(all_message)', len(all_message))
+
+    if all_message:
+        print('batch_size', batch_size)
+        ###### load llama-3.1-70B as the judge ######
+        if args.entailment_model.startswith("http"): # VLM
+            judge_model = args.entailment_model
+            tokenizer = None
+        else:
+            judge_model_name = 'meta-llama/Meta-Llama-3.1-70B-Instruct'
+            judge_model = AutoModelForCausalLM.from_pretrained(
+                judge_model_name, torch_dtype=torch.float16, 
+                device_map='auto'
+            )
+            judge_model.eval()
+            tokenizer = AutoTokenizer.from_pretrained(judge_model_name)
+            tokenizer.pad_token = tokenizer.eos_token
+            tokenizer.padding_side = 'left'
+        ##########################################
+    
+    for i in tqdm(range(0, len(all_message), batch_size), total=len(all_message)//batch_size):
+        batch_message = all_message[i:i+batch_size]
+        batch_question = all_question[i:i+batch_size]
+
+        verbal_uncertain_scores_batch = get_batch_results(judge_model, tokenizer, batch_message)
+        assert len(verbal_uncertain_scores_batch) == len(batch_message)
+        # group verbal_uncertain_scores_batch each N
+        
+        # for each question
+        for question, score in zip(batch_question, verbal_uncertain_scores_batch):
+            verbal_uncertain_scores[question] = score
+            
+        with open(results_fn, 'w') as f:
+            print('len(verbal_uncertain_scores)', len(verbal_uncertain_scores))
+            json.dump(verbal_uncertain_scores, f)
+
+    ### save judge results ###
+    with open(results_fn, 'w') as f:
+        print('len(verbal_uncertain_scores)', len(verbal_uncertain_scores))
+        json.dump(verbal_uncertain_scores, f)
+    #############################
+    
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset', default=None, type=str)
+    parser.add_argument('--dataset2', default=None, type=str)
+    parser.add_argument('--model_name', default=None, type=str)
+    parser.add_argument('--prompt_type', default=None, type=str)
+    parser.add_argument('--input_file', default=None, type=str)
+    parser.add_argument('--split', type=str, default="test")
+    parser.add_argument('--question_type', default=None, type=str)
+    parser.add_argument('--max_alpha', type=float, default=1.0)
+    parser.add_argument('--batch_size', type=int, default=40)
+    parser.add_argument('--entailment_model', type=str, default="")
+    parser.add_argument("--use_predicted", type=int, default=0)
+    parser.add_argument("--iti_method", type=int, default=2)
+    parser.add_argument('--str_process_layers', type=str, default="")
+    args = parser.parse_args()
+    judge_main(args)
