@@ -63,8 +63,8 @@ def load_data(model_name, dataset, split, feature, label_name, prompt_type, use_
         raise ValueError("label_name should be either 'label' or 'accuracy'")
     
     
-    if split == 'train':
-        print("label hallucinated rate", np.mean(label))
+    # if split == 'train':
+    #     print("label hallucinated rate", np.mean(label))
     
     if use_predicted_test and split == 'test':
         QID2feature = load_predicted_test_data(model_name, dataset, feature)
@@ -100,20 +100,20 @@ def load_data(model_name, dataset, split, feature, label_name, prompt_type, use_
     return features, label
 
 LLAMA_PROBE_PATHS = {
-    # "ling_uncertainty": {
-    #     "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_sampled/0.01_range(11,13)",
-    #     "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_sampled/0.005_range(11,13)",
-    #     "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_sampled/0.005_range(11,13)",
+    # "verbal_uncertainty": {
+    #     "trivia_qa": "outputs/LinearRegressor_verbal_uncertainty/trivia_qa_sampled/0.01_range(11,13)",
+    #     "nq_open": "outputs/LinearRegressor_verbal_uncertainty/nq_open_sampled/0.005_range(11,13)",
+    #     "pop_qa": "outputs/LinearRegressor_verbal_uncertainty/pop_qa_sampled/0.005_range(11,13)",
     # },
-    # "ling_uncertainty": {
-    #     "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_sampled/0.0005_range(5,20)",
-    #     "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_sampled/0.001_range(10,20)",
-    #     "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_sampled/0.001_range(5,20)",
+    # "verbal_uncertainty": {
+    #     "trivia_qa": "outputs/LinearRegressor_verbal_uncertainty/trivia_qa_sampled/0.0005_range(5,20)",
+    #     "nq_open": "outputs/LinearRegressor_verbal_uncertainty/nq_open_sampled/0.001_range(10,20)",
+    #     "pop_qa": "outputs/LinearRegressor_verbal_uncertainty/pop_qa_sampled/0.001_range(5,20)",
     # },
-    "ling_uncertainty": {
-        "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_Meta-Llama-3.1-8B-Instruct/0.001_range(5,20)",
-        "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_Meta-Llama-3.1-8B-Instruct/0.001_range(10,20)",
-        "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_Meta-Llama-3.1-8B-Instruct/0.001_range(10,20)",
+    "verbal_uncertainty": {
+        "trivia_qa": "outputs/LinearRegressor_verbal_uncertainty/trivia_qa_Meta-Llama-3.1-8B-Instruct/0.001_range(5,20)",
+        "nq_open": "outputs/LinearRegressor_verbal_uncertainty/nq_open_Meta-Llama-3.1-8B-Instruct/0.001_range(10,20)",
+        "pop_qa": "outputs/LinearRegressor_verbal_uncertainty/pop_qa_Meta-Llama-3.1-8B-Instruct/0.001_range(10,20)",
     },
     "word_semantic_entropy": {
         "trivia_qa": "outputs/LinearRegressor_word_semantic_entropy/trivia_qa_sampled/0.005_range(12,14)",
@@ -143,10 +143,10 @@ LLAMA_PROBE_PATHS = {
     }
 
 MISTRAL_PROBE_PATHS ={
-    "ling_uncertainty": {
-        "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_Mistral-7B-Instruct-v0.3/0.0005_range(5,20)",
-        "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_Mistral-7B-Instruct-v0.3/0.001_range(5,20)",
-        "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_Mistral-7B-Instruct-v0.3/0.005_range(5,20)",
+    "verbal_uncertainty": {
+        "trivia_qa": "outputs/LinearRegressor_verbal_uncertainty/trivia_qa_Mistral-7B-Instruct-v0.3/0.0005_range(5,20)",
+        "nq_open": "outputs/LinearRegressor_verbal_uncertainty/nq_open_Mistral-7B-Instruct-v0.3/0.001_range(5,20)",
+        "pop_qa": "outputs/LinearRegressor_verbal_uncertainty/pop_qa_Mistral-7B-Instruct-v0.3/0.005_range(5,20)",
     },
     "sentence_semantic_entropy": {
         "trivia_qa": "outputs/LinearRegressor_sentence_semantic_entropy/trivia_qa_Mistral-7B-Instruct-v0.3/0.001_range(5,20)",
@@ -157,10 +157,10 @@ MISTRAL_PROBE_PATHS ={
 }
 
 QWEN_PROBE_PATHS ={
-    "ling_uncertainty": {
-        "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_Qwen2.5-7B-Instruct/5e-05_range(5,20)",
-        "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_Qwen2.5-7B-Instruct/0.0001_range(10,20)",
-        "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_Qwen2.5-7B-Instruct/0.001_range(10,20)",
+    "verbal_uncertainty": {
+        "trivia_qa": "outputs/LinearRegressor_verbal_uncertainty/trivia_qa_Qwen2.5-7B-Instruct/5e-05_range(5,20)",
+        "nq_open": "outputs/LinearRegressor_verbal_uncertainty/nq_open_Qwen2.5-7B-Instruct/0.0001_range(10,20)",
+        "pop_qa": "outputs/LinearRegressor_verbal_uncertainty/pop_qa_Qwen2.5-7B-Instruct/0.001_range(10,20)",
     },
     "sentence_semantic_entropy":{
         "trivia_qa": "outputs/LinearRegressor_sentence_semantic_entropy/trivia_qa_Qwen2.5-7B-Instruct/0.001_range(10,20)",

@@ -11,14 +11,14 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_path = os.path.dirname(current_dir)
 sys.path.append(root_path)
-from ling_uncertainty.prompts import get_qa_system_prompt
-sys.path.append(f"{root_path}/sem_uncertainty/semantic_entropy")
-from uncertainty.utils.utils import make_prompt
+from verbal_uncertainty.prompts import get_qa_system_prompt
+sys.path.append(f"{root_path}/sem_uncertainty/")
+from semantic_entropy.utils import make_prompt
 # set seed 
 torch.manual_seed(42)
 np.random.seed(42)
 import jsonlines
-from ablation import register_feature_ablation_hook2, generate_all_responses
+from causal import register_feature_ablation_hook2, generate_all_responses
 from src.utils import process_layers_to_process
 from src.detection_utils import LLAMA_PROBE_PATHS
 
@@ -48,7 +48,7 @@ def get_answers(questions, alphas, detection_res, out_file, process_layers, mode
             with jsonlines.open(out_file, 'a') as writer:
                 writer.write(line)
         else: # regenerate
-            register_feature_ablation_hook2(model, ling_uncertain_feats, process_layers, alpha)
+            register_feature_ablation_hook2(model, verbal_uncertain_feats, process_layers, alpha)
             if prompt_type == 'uncertainty':
                 messages = [
                     {"role": "system", "content": sys_prompt},
@@ -67,7 +67,7 @@ def get_answers(questions, alphas, detection_res, out_file, process_layers, mode
 
 
 def load_detection_res(dataset, model_name):
-    path = f"{root_path}/detector/LR_outputs/{dataset}/{model_name}/ling_uncertainty_sentence_semantic_entropy.json"
+    path = f"{root_path}/detector/LR_outputs/{dataset}/{model_name}/verbal_uncertainty_sentence_semantic_entropy.json"
     with open(path) as f:
         detection_res = json.load(f)["y_pred"]
     return detection_res
@@ -103,26 +103,23 @@ if __name__ == '__main__':
     process_layers = args.process_layers = process_layers_to_process(args.str_process_layers)
     prompt_type = args.prompt_type
     
-    # if model_name == 'Meta-Llama-3.1-8B-Instruct':
-    #     results_df = pd.read_csv(f"{root_path}/datasets/{dataset}/sampled/{split}.csv")
-    # else:
     results_df = pd.read_csv(f"{root_path}/datasets/{dataset}/{model_name}/{split}.csv")
     
     if args.use_predicted:
         output_dir = f'{root_path}/calibration/predicted_outputs/{dataset}/{model_name}/{args.prompt_type}/{split}'
-        with open(f"{root_path}/probe/"+LLAMA_PROBE_PATHS['ling_uncertainty'][dataset]+f"/{dataset}_predict_results.json") as f:
+        with open(f"{root_path}/probe/"+LLAMA_PROBE_PATHS['verbal_uncertainty'][dataset]+f"/{dataset}_predict_results.json") as f:
             data = json.load(f)
-            lu_scores_llm = np.array(data["predictions"])
+            vu_scores_llm = np.array(data["predictions"])
         with open(f"{root_path}/probe/"+LLAMA_PROBE_PATHS['sentence_semantic_entropy'][dataset]+f"/{dataset}_predict_results.json") as f:
             data = json.load(f)
             su_scores = np.array(data["predictions"])
     else:
         output_dir = f'{root_path}/calibration/outputs/{dataset}/{model_name}/{args.prompt_type}/{split}'
-        lu_scores_llm = results_df['ling_uncertainty'].to_numpy()
+        vu_scores_llm = results_df['verbal_uncertainty'].to_numpy()
         su_scores = results_df['sentence_semantic_entropy'].to_numpy()
     os.makedirs(output_dir, exist_ok=True)
-    assert len(lu_scores_llm) == len(su_scores)
-    print('lu_scores_llm', lu_scores_llm)
+    assert len(vu_scores_llm) == len(su_scores)
+    print('vu_scores_llm', vu_scores_llm)
     # min 0 max su_scores 1
     # min 0 max su_scores MAX_SE
     # mean 0.8832655919376744 1.2997004660200655 0.6444195462553963
@@ -139,31 +136,31 @@ if __name__ == '__main__':
         alphas = (su_scores/MAX_SE) * MAX_ALPHA
         alphas = np.clip(alphas, 0, MAX_ALPHA)
         alphas = np.round(alphas, 4)
-        ling_uncertain_feats = torch.load(f'{root_path}/calibration/outputs/merged/{model_name}/{args.prompt_type}/Hs_hedge_universal.pt')
-        out_file = f"{output_dir}/with_lufi_{args.iti_method}_{args.str_process_layers}_{args.max_alpha}.jsonl"
+        verbal_uncertain_feats = torch.load(f'{root_path}/calibration/outputs/merged/{model_name}/{args.prompt_type}/Hs_hedge_universal.pt')
+        out_file = f"{output_dir}/with_vufi_{args.iti_method}_{args.str_process_layers}_{args.max_alpha}.jsonl"
     elif args.iti_method == 1:
         # use other datasets
-        out_file = f"{output_dir}/with_lufi_{args.iti_method}_{args.dataset2}_{args.str_process_layers}_{args.max_alpha}.jsonl"
-        alphas = (su_scores/MAX_SE - lu_scores_llm) * MAX_ALPHA
+        out_file = f"{output_dir}/with_vufi_{args.iti_method}_{args.dataset2}_{args.str_process_layers}_{args.max_alpha}.jsonl"
+        alphas = (su_scores/MAX_SE - vu_scores_llm) * MAX_ALPHA
         # max alphas and 0
         alphas = np.clip(alphas, 0, MAX_ALPHA)
         alphas = np.round(alphas, 4)
         print('alphas', alphas)
-        ling_uncertain_feats = torch.load(f'{root_path}/calibration/outputs/{args.dataset2}/{model_name}/{args.prompt_type}/train/Hs_hedge_universal.pt')
+        verbal_uncertain_feats = torch.load(f'{root_path}/calibration/outputs/{args.dataset2}/{model_name}/{args.prompt_type}/train/Hs_hedge_universal.pt')
     elif args.iti_method == 2:
-        out_file = f"{output_dir}/with_lufi_{args.iti_method}_{args.str_process_layers}_{args.max_alpha}.jsonl"
-        alphas = (su_scores/MAX_SE - lu_scores_llm) * MAX_ALPHA
+        out_file = f"{output_dir}/with_vufi_{args.iti_method}_{args.str_process_layers}_{args.max_alpha}.jsonl"
+        alphas = (su_scores/MAX_SE - vu_scores_llm) * MAX_ALPHA
         # max alphas and 0
         alphas = np.clip(alphas, 0, MAX_ALPHA)
         alphas = np.round(alphas, 4)
         print('alphas', alphas)
-        ling_uncertain_feats = torch.load(f'{root_path}/calibration/outputs/merged/{model_name}/{args.prompt_type}/Hs_hedge_universal.pt')
+        verbal_uncertain_feats = torch.load(f'{root_path}/calibration/outputs/merged/{model_name}/{args.prompt_type}/Hs_hedge_universal.pt')
     else:
         assert False
 
-    # with open(f"{output_dir}/activation_luf_mean_std_cache.pkl", "rb") as f:
-    #     luf_cache_all = pickle.load(f)
-    # assert len(luf_cache_all[0][0]) == len(results_df)
+    # with open(f"{output_dir}/activation_vuf_mean_std_cache.pkl", "rb") as f:
+    #     vuf_cache_all = pickle.load(f)
+    # assert len(vuf_cache_all[0][0]) == len(results_df)
     #############################
     ### load `LM and tokenizer ###
     device = torch.device('cuda')

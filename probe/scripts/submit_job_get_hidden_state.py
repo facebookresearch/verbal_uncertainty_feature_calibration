@@ -4,11 +4,11 @@ import argparse
 import re
 home_path = os.path.expanduser("~")
 current_dir = os.path.dirname(os.path.abspath(__file__))
-root_path = os.path.dirname(current_dir)
+root_path = os.path.dirname(os.path.dirname(current_dir))
 class Trainer:
     def __init__(self, output_dir, word_size, config):
         self.cwd = current_dir
-        self.conda_env_name = "detect"
+        self.conda_env_name = "vuf"
         self.conda_path =  f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
@@ -42,7 +42,7 @@ echo "Python version: $(python --version)"
 echo "Using torchrun: $(which torchrun)"
 echo "Conda envs: $(conda env list)"
 
-python get_hidden_state.py --save_dir_root "{self.output_dir}" {args}
+python {root_path}/probe/get_hidden_state.py --save_dir_root "{self.output_dir}" {args}
         """
 # -m torch.distributed.run --nproc_per_node=8 
         print(cmd)
@@ -58,27 +58,6 @@ python get_hidden_state.py --save_dir_root "{self.output_dir}" {args}
 
 def load_config(args):
     """
-  
-## QUESTION
-
-for D in trivia_qa nq_open pop_qa
-do
-for S in test train val
-do
-for MODEL in "Qwen2.5-7B-Instruct"
-do
-python scripts/submit_job_get_hidden_state.py \
---source_dir $D \
---splits $S \
---datasplit $MODEL \
---internal_model_name $MODEL \
---info_type only_question_last &
-
-done
-done
-done
-
-
 for D in trivia_qa nq_open pop_qa
 do
 for S in test train val
@@ -144,7 +123,7 @@ def get_run_output_dir(args):
     # "datasets/"$DATA"/"$DATASPLIT
     datatset, datasplit = args['source_dirs'].split("/")[-2:]
     internal_model_name = args['internal_model_name']
-    description = f"get_hidden_state/{datatset}_{datasplit}_{info_type}_{internal_model_name}/"
+    description = f"{root_path}/logs/get_hidden_state/{datatset}_{datasplit}_{info_type}_{internal_model_name}/"
     # description += datetime.datetime.now().strftime("%m%d-%H%M")
     return description
 
@@ -160,6 +139,7 @@ if __name__ == "__main__":
     nodes = 1
     executor = submitit.AutoExecutor(folder=output_dir)
     executor.update_parameters(
+        name="get_hidden_state",
         mem_gb=700,
         gpus_per_node=8,
         cpus_per_task=80,

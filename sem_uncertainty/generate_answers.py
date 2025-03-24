@@ -1,19 +1,44 @@
+import os
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, set_seed
 set_seed(42)
 from tqdm.auto import tqdm
 from os.path import join
 import argparse
-
 import sys
-import os
 import jsonlines
-from uncertainty.utils import utils
-
 current_dir = os.path.dirname(os.path.abspath(__file__))
-root_path = current_dir.split('sem_uncertainty')[0]
-sys.path.append(root_path)
-from ling_uncertainty.qa_generate import load_qa_ds
+root_path = os.path.dirname(current_dir)
+sys.path.append(f"{root_path}/sem_uncertainty/")
+from semantic_entropy import utils
+import pandas as pd
+from ast import literal_eval
+
+def load_qa_ds(dataset_name, split):
+    data_file = f'{root_path}/datasets/{dataset_name}/sampled/{split}.csv'
+    data = pd.read_csv(data_file)
+
+    qa_ds = []
+    if dataset_name in ["pop_qa", "trivia_qa", "IDK"]:
+        for i, row in data.iterrows():
+            qa_ds.append({
+                    'id': row['id'],
+                    'question': row['question'].strip(),
+                    'answer': literal_eval(row['answer']),
+                    'answerable': 1
+            })
+
+    elif dataset_name == 'nq_open':
+        for i, row in data.iterrows():
+            qa_ds.append({
+                    'id': row['id'],
+                    'question': row['question'].strip()+'?',
+                    'answer': literal_eval(row['answer']),
+                    'answerable': 1
+            })
+    
+    return qa_ds
+
 
 def prepare_inputs(tokenizer, batch_local_prompt):
     batch_messages = []
@@ -61,7 +86,7 @@ def main_generate(args):
     qa_ds = load_qa_ds(dataset, split)
     
     #############################
-    out_root_dir = f"{root_path}/{args.out_root_dir}/{args.dataset}/{args.prompt_type}/{model_name}/"
+    out_root_dir = f"{current_dir}/{args.out_root_dir}/{args.dataset}/{args.prompt_type}/{model_name}/"
     results_fn = f"{split}_{args.temperature}.jsonl"
     print('out_root_dir', out_root_dir)
     os.makedirs(out_root_dir, exist_ok=True)
@@ -121,7 +146,7 @@ def main_generate(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--out_root_dir', default='sem_uncertainty/outputs/', type=str)
+    parser.add_argument('--out_root_dir', default='outputs/', type=str)
     parser.add_argument('--temperature', default=1.0, type=float)
     parser.add_argument('--prompt_type', default='sentence', type=str)
     parser.add_argument('--max_new_tokens', default=100, type=int)

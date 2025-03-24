@@ -1,8 +1,12 @@
 import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 import json
 from tqdm.contrib.concurrent import thread_map
 import openai
-from utils import init_model
+import sys
+sys.path.append(root_path)
+from src.utils import init_model
 import os
 import json
 import torch

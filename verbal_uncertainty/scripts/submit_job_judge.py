@@ -2,14 +2,14 @@ import submitit
 import os
 import datetime
 import argparse
-import yaml
-import re
-
+home_path = os.path.expanduser("~")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(os.path.dirname(current_dir))
 class Trainer:
     def __init__(self, output_dir, word_size, config):
-        self.cwd = "/private/home/ziweiji/Hallu_Det/ling_uncertainty"
-        self.conda_env_name = "detect"
-        self.conda_path = "detect"
+        self.cwd = current_dir
+        self.conda_env_name = "vuf"
+        self.conda_path =  f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
         self.word_size = word_size
@@ -43,7 +43,7 @@ echo "Python version: $(python --version)"
 echo "Using torchrun: $(which torchrun)"
 echo "Conda envs: $(conda env list)"
 
-python /private/home/ziweiji/Hallu_Det/ling_uncertainty/lu_llm_judge.py \\
+python {root_path}/verbal_uncertainty/verbal_llm_judge.py \\
     {args}
         """
         print(cmd)
@@ -58,35 +58,6 @@ python /private/home/ziweiji/Hallu_Det/ling_uncertainty/lu_llm_judge.py \\
 
 
 def load_config(args):
-    """
-conda activate detect
-cd /private/home/ziweiji/Hallu_Det/ling_uncertainty
-
-for DATA in 'pop_qa'
-do
-for MODEL in Llama-3.1-8B-GRPO-Instruct
-do
-for SPLIT in val test
-do
-python /private/home/ziweiji/Hallu_Det/ling_uncertainty/lu_llm_judge.py \
---results_dir '/private/home/ziweiji/Hallu_Det/ling_uncertainty/outputs_10' \
---dataset $DATA \
---split $SPLIT \
---model_name $MODEL \
---port 'http://learnfair6008:8000/v1' &
-done
-done
-done
-
-
-6030 trivia_qa train tmux 0
-6037 nq_open train tmux 1
-6006 pop_qa train tmux 2
-
-6012 trivia_qa val test tmux 3
-6039 nq_open val test tmux 4
-6008 pop_qa val test tmux 5
-    """
     # if os.path.exists(config_path):
     #     with open(config_path, "r") as file:
     #         return yaml.safe_load(file)
@@ -97,7 +68,7 @@ done
         'split': args.split,
         "model_name": args.model_name,
         "batch_size": args.batch_size,
-        "results_dir": '/private/home/ziweiji/Hallu_Det/ling_uncertainty/outputs_10',
+        "results_dir": f'{root_path}/verbal_uncertainty/outputs',
         }}
     ######################################################
 

@@ -95,3 +95,21 @@ class LlamaMLPRegressor(PreTrainedModel):
             loss=loss,
             logits=logits,
         )
+
+
+
+MODEL_MAP = {'LinearRegressor': LinearRegressor,}
+def load_regressor_model(args):
+    if args.model_type == "LinearRegressor":
+        config = LinearRegressorConfig(
+                    input_dim=args.input_dim,)
+
+    MDOEL_CLASS = MODEL_MAP[args.model_type]
+    if args.model_path:
+        model = MDOEL_CLASS.from_pretrained(args.model_path,
+                                        config=config,
+                                        torch_dtype=torch.bfloat16)
+    else:
+        model = MDOEL_CLASS(config)
+
+    return model

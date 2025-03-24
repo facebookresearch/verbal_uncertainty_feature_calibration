@@ -5,11 +5,13 @@ import datetime
 import argparse
 import os
 home_path = os.path.expanduser("~")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 
 class Trainer:
     def __init__(self, output_dir, SCRIPT):
-        self.cwd = f"{home_path}/deserted_slurm"
-        self.conda_env_name = "detect"
+        self.cwd = root_path
+        self.conda_env_name = "vuf"
         self.conda_path = f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.args = {}
@@ -51,7 +53,7 @@ def parse_args():
 
     
 def get_run_output_dir(MODEL):    
-    description = f'slurm_servers/{MODEL}/'
+    description = f'{root_path}/slurm_servers/{MODEL}/'
     description += datetime.datetime.now().strftime("%m%d-%H%M")
     return description
 
@@ -91,7 +93,7 @@ if __name__ == "__main__":
 
     MAX_MODEL_LEN = "--max-model-len=4096"
     PARALLEL_ARGS = "--tensor-parallel-size=8"
-    SCRIPT = f"vllm serve {MODEL} {PARALLEL_ARGS} {MAX_MODEL_LEN} --disable-log-stats --download_dir=~/.cache/huggingface/hub/models--{MODEL.replace('/', '--')}"
+    SCRIPT = f"vllm serve {MODEL} {PARALLEL_ARGS} {MAX_MODEL_LEN} --disable-log-stats --download_dir={home_path}/.cache/huggingface/hub/models--{MODEL.replace('/', '--')}"
 
     # Submit the job
     job = executor.submit(Trainer(output_dir, SCRIPT))

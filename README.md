@@ -3,15 +3,28 @@ Ziwei Ji*, Lei Yu*, Yeskendir Koishekenov, Yejin Bang, Anthony Hartshorn, Alan S
 
 [![arXiv](https://img.shields.io/badge/arXiv-2406.15927-b31b1b.svg)](https://arxiv.org/pdf/2503.14477)
 
-# Installation and Requirements
+## Installation
 ```
 git clone git@github.com:fairinternal/mechanistic_uncertainty_calibration.git
 cd mechanistic_uncertainty_calibration
+
+conda create --name vuf python==3.8.17
+conda activate vuf
 pip install -r requirements.txt
 ```
 
-# Dataset Preparation
-Download and process datasets using datasets/build_data.ipynb
+## Dataset Preparation
+Download and process datasets: TriviaQA, NQ Open, and PopQA.
+```
+bash datasets/scripts/download_dataset.sh
+```
+
+## Set up vLLM Server
+Set up [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#quickstart-online) sever to infer LLM. 
+The LLM is used for labelling and evaluation in the following steps.
+```
+python src/vllm-all.py
+```
 
 ## Semantic Uncertainty Calculation
 1. Sample multiple answers 
@@ -28,37 +41,63 @@ bash sem_uncertainty/scripts/run_compute_uncertainty.sh
 ```
 bash verbal_uncertainty/scripts/generate.sh
 ```
-2. Set up [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#quickstart-online) sever to infer LLM
-```
-python src/vllm-all.py
-```
-
-3. Use LLM to judge the verbal uncertainty level
+2. Use LLM to judge the verbal uncertainty level
 ```
 bash verbal_uncertainty/scripts/judge.sh
 ```
-4. Merge the generated answers and calcualted uncertaities using datasets/merge.ipynb
 
 
-# Verbal Uncertainty Feature
-## Feature Extraction
+## Hallucination Labeling: 
+1. Generate most likely answer
 ```
-bash calibration/scripts/universal_luf.sh
+bash hallu_labeling/scripts/generate.sh
 ```
-
-## Causal Validation 
+2. Label ACC and Refusal to get the hallucination label
 ```
-bash calibration/scripts/ablation.sh
-calibration/hedging-causal-validate.ipynb
+bash hallu_labeling/scripts/run_labeling.sh
 ```
 
-# Hallucination Detector
+3. Merge the generated answers, hallucination labels and calcualted uncertaities
+```
+bash datasets/scripts/merge.sh
+```
+
+
+## Verbal Uncertainty Feature
+### Feature Extraction
+```
+bash calibration/scripts/universal_vuf.sh
+bash calibration/scripts/merge_vuf.sh
+```
+
+### Causal Validation 
+1. Generation with different intensities of inference-time intervention (&alpha;).
+```
+bash calibration/scripts/causal.sh
+```
+2. evaluate verbal uncertainty
+```
+bash calibration/scripts/causal_eval.sh
+```
+
+## Hallucination Detector
 Train LogisticRegression(LR)-based detector based on uncertainties
 ```
 bash detection/scripts/detection.sh
 ```
 
-##  Uncertainty Probe
+## Uncertainty Calibration for Hallucination Mitigation
+calibrate verbal uncertainty with semantic entropy to mitigate hallucinations
+```
+bash calibration/scripts/semantic_control.sh
+```
+## Evaluation
+```
+bash calibration/scripts/semantic_control_eval.sh
+```
+
+
+## Ablation Study: Uncertainty Probe
 Train uncrtainty probes to predict uncertainties without multi-sampling.
 1. Obtain the hidden states of questions
 ```
@@ -69,16 +108,6 @@ bash probe/scripts/get_hidden_state.sh
 bash probe/scripts/trainer.sh
 ```
 
-# Uncertainty Calibration for Hallucination Mitigation
-## Generation with inference-time intervention
-calibrate verbal uncertainty with semantic entropy to mitigate hallucinations
-```
-bash calibration/scripts/semantic_control.sh
-```
-## Evaluation
-```
-bash calibration/scripts/run_eval.sh
-```
 
 # License
 The majority of mechanistic_uncertainty_calibration is licensed under CC-BY-NC, however portions of the project are available under separate license terms: OATML is licensed under the MIT license.

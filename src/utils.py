@@ -4,7 +4,7 @@ from transformers import AutoTokenizer, LlamaTokenizer, LlamaForCausalLM
 
 def init_model(model_name, device, padding_side="left", load_model=True):
     print("device", device)
-    if model_name == "Llama-3.1-8B-Instruct" or "llama3.1-8b_lora_sft" in model_name:
+    if "Llama-3.1-8B-Instruct" in model_name or "llama3.1-8b_lora_sft" in model_name:
         model_path = "meta-llama/Meta-Llama-3.1-8B-Instruct" 
         tokenizer = AutoTokenizer.from_pretrained(model_path, padding_side=padding_side)
         if load_model:

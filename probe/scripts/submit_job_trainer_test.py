@@ -4,12 +4,12 @@ import argparse
 import re
 home_path = os.path.expanduser("~")
 current_dir = os.path.dirname(os.path.abspath(__file__))
-root_path = os.path.dirname(current_dir)
+root_path = os.path.dirname(os.path.dirname(current_dir))
 
 class Trainer:
     def __init__(self, output_dir, word_size, config):
         self.cwd = current_dir
-        self.conda_env_name = "detect"
+        self.conda_env_name = "vuf"
         self.conda_path =  f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
@@ -84,7 +84,7 @@ do
 python ~/Hallu_Det/probe/scripts/submit_job_trainer_test.py \
 --dataset $D \
 --label_name $U \
---model_path "outputs/LinearRegressor_"$U"/"$D"_"$MODEL"/"$LR"_"$L \
+--model_path f"{root_path}/probe/outputs/LinearRegressor_"$U"/"$D"_"$MODEL"/"$LR"_"$L \
 --model_type "LinearRegressor" \
 --internal_model_name $MODEL \
 --predict_split 'test' &
@@ -102,41 +102,41 @@ done
     # with open(config_path, "r") as file:
     #     return yaml.safe_load(file) 
     
-    LING_MODEL_PATHS = {
-        "trivia_qa": "outputs/LinearRegressor_ling_uncertainty/trivia_qa_sampled/0.01_range(11,13)", ###
-        "nq_open": "outputs/LinearRegressor_ling_uncertainty/nq_open_sampled/0.005_range(11,13)",
-        "pop_qa": "outputs/LinearRegressor_ling_uncertainty/pop_qa_sampled/0.005_range(11,13)",
+    VERBAL_MODEL_PATHS = {
+        "trivia_qa": f"{root_path}/probe/outputs/LinearRegressor_verbal_uncertainty/trivia_qa_sampled/0.01_range(11,13)", ###
+        "nq_open": f"{root_path}/probe/outputs/LinearRegressor_verbal_uncertainty/nq_open_sampled/0.005_range(11,13)",
+        "pop_qa": f"{root_path}/probe/outputs/LinearRegressor_verbal_uncertainty/pop_qa_sampled/0.005_range(11,13)",
     }
 
     WORD_SEMANTIC_MODEL_PATHS = {
-        "trivia_qa": "outputs/LinearRegressor_word_semantic_entropy/trivia_qa_sampled/0.005_range(12,14)", ###
-        "nq_open": "outputs/LinearRegressor_word_semantic_entropy/nq_open_sampled/0.01_range(12,14)",
-        "pop_qa": "outputs/LinearRegressor_word_semantic_entropy/pop_qa_sampled/0.01_range(12,14)",
+        "trivia_qa": f"{root_path}/probe/outputs/LinearRegressor_word_semantic_entropy/trivia_qa_sampled/0.005_range(12,14)", ###
+        "nq_open": f"{root_path}/probe/outputs/LinearRegressor_word_semantic_entropy/nq_open_sampled/0.01_range(12,14)",
+        "pop_qa": f"{root_path}/probe/outputs/LinearRegressor_word_semantic_entropy/pop_qa_sampled/0.01_range(12,14)",
     }
 
     WORD_EIGEN_MODEL_PATHS = {
-        "trivia_qa": "outputs/LinearRegressor_word_eigen/trivia_qa_sampled/0.01_range(12,14)",
-        "nq_open": "outputs/LinearRegressor_word_eigen/nq_open_sampled/0.005_range(12,14)", #
-        "pop_qa": "outputs/LinearRegressor_word_eigen/pop_qa_sampled/0.05_range(12,14)", #
+        "trivia_qa": f"{root_path}/probe/outputs/LinearRegressor_word_eigen/trivia_qa_sampled/0.01_range(12,14)",
+        "nq_open": f"{root_path}/probe/outputs/LinearRegressor_word_eigen/nq_open_sampled/0.005_range(12,14)", #
+        "pop_qa": f"{root_path}/probe/outputs/LinearRegressor_word_eigen/pop_qa_sampled/0.05_range(12,14)", #
     }
 
     SENT_SEMANTIC_MODEL_PATHS = {
-        "trivia_qa": "outputs/LinearRegressor_sentence_semantic_entropy/trivia_qa_sampled/0.01_range(12,14)", ###
-        "nq_open": "outputs/LinearRegressor_sentence_semantic_entropy/nq_open_sampled/0.01_range(12,14)",
-        "pop_qa": "outputs/LinearRegressor_sentence_semantic_entropy/pop_qa_sampled/0.01_range(12,14)",
+        "trivia_qa": f"{root_path}/probe/outputs/LinearRegressor_sentence_semantic_entropy/trivia_qa_sampled/0.01_range(12,14)", ###
+        "nq_open": f"{root_path}/probe/outputs/LinearRegressor_sentence_semantic_entropy/nq_open_sampled/0.01_range(12,14)",
+        "pop_qa": f"{root_path}/probe/outputs/LinearRegressor_sentence_semantic_entropy/pop_qa_sampled/0.01_range(12,14)",
     }
 
     SENT_EIGEN_MODEL_PATHS = {
-        "trivia_qa": "outputs/LinearRegressor_sentence_eigen/trivia_qa_sampled/0.01_range(12,14)",
-        "nq_open": "outputs/LinearRegressor_sentence_eigen/nq_open_sampled/0.001_range(12,14)", #
-        "pop_qa": "outputs/LinearRegressor_sentence_eigen/pop_qa_sampled/0.001_range(12,14)", #
+        "trivia_qa": f"{root_path}/probe/outputs/LinearRegressor_sentence_eigen/trivia_qa_sampled/0.01_range(12,14)",
+        "nq_open": f"{root_path}/probe/outputs/LinearRegressor_sentence_eigen/nq_open_sampled/0.001_range(12,14)", #
+        "pop_qa": f"{root_path}/probe/outputs/LinearRegressor_sentence_eigen/pop_qa_sampled/0.001_range(12,14)", #
     }
 
     if args.model_path:
         model_path = args.model_path
     else:
-        if args.label_name == 'ling_uncertainty':
-            model_path = LING_MODEL_PATHS[args.dataset]
+        if args.label_name == 'verbal_uncertainty':
+            model_path = VERBAL_MODEL_PATHS[args.dataset]
         elif args.label_name == 'word_semantic_entropy':
             model_path = WORD_SEMANTIC_MODEL_PATHS[args.dataset]
         elif args.label_name == 'word_eigen':
@@ -162,7 +162,7 @@ done
             "model_path": model_path,
             "info_type": "last", # don't add only question!!
             "save_cache": args.save_cache,
-            "label_name":  args.label_name, # "ling_uncertainty", "word_sematic_entropy" refuse_sematic_entropy eigen
+            "label_name":  args.label_name, # "verbal_uncertainty", "word_sematic_entropy" refuse_sematic_entropy eigen
             "layers_to_process": layers_to_process,
             "pair_differ": False,
             "source_dirs": source_dirs,

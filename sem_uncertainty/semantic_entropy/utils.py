@@ -24,18 +24,25 @@ SOFTWARE.
 """
 
 import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 import logging
 import argparse
 import pickle
 
-import wandb
+# import wandb
 import ast
 from evaluate import load
 import sys
-sys.path.append('/home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/')
-sys.path.append('/private/home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy')
-from uncertainty.models.huggingface_models import HuggingfaceModel
-from uncertainty.utils import openai as oai
+sys.path.append(current_dir)
+from huggingface_models import HuggingfaceModel
+import openai as oai
+import logging
+import hashlib
+from tenacity import (retry, stop_after_attempt,  # for exponential backoff
+                      wait_random_exponential)
+
+from openai import OpenAI
 
 PROMPTS = {
     'default': "Answer the following question as briefly as possible.\n",
@@ -293,7 +300,7 @@ def batch_llm_metric(batched_predicted_answer, batched_example, model, prompt_ty
         else:
             prompt += "Within the context of the question, does the proposed answer mean the same as any of the expected answers?"
         
-        if prompt_type == 'ignore_lu':
+        if prompt_type == 'ignore_vu':
             prompt += """ Please disregard any expressions of uncertainty such as "may", "might", or "I am uncertain" in the provided answer, and concentrate solely on the content."""
 
         prompt += " Respond only with yes or no.\nResponse:"
@@ -418,8 +425,5 @@ def get_metric(metric):
     return metric
 
 
-def save(object, file):
-    print(f'Saving {file} to {wandb.run.dir}')
-    with open(f'{wandb.run.dir}/{file}', 'wb') as f:
-        pickle.dump(object, f)
-    wandb.save(f'{wandb.run.dir}/{file}')
+def md5hash(string):
+    return int(hashlib.md5(string.encode('utf-8')).hexdigest(), 16)

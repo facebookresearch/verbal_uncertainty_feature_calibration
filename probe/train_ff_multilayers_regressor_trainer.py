@@ -32,15 +32,19 @@ import numpy as np
 import sys
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_path = os.path.dirname(current_dir)
-sys.path.append(root_path)
+sys.path.append(current_dir)
+from regression_models import load_regressor_model
 
+sys.path.append(root_path)
 from src.utils import process_layers_to_process
-from Hallu_Det.datasets.dataset import HiddenLayersDataset
+
+sys.path.append(f"{root_path}/datasets")
+from dataset import HiddenLayersDataset
 
 import pandas as pd
 import json
 
-from  Hallu_Det.others.src.train_utils import load_regressor_model
+
 
 import random
 random.seed(42)

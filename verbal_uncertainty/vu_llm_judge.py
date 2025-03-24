@@ -8,11 +8,9 @@ import json
 import jsonlines
 import os
 import sys
-if os.path.exists("/private/home/ziweiji/"):
-    root_path = '/private/home/ziweiji/Hallu_Det/'
-else:
-    root_path = '/home/ziweiji/Hallu_Det/'
-sys.path.append(f'{root_path}/ling_uncertainty')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
+sys.path.append(current_dir)
 from prompts import DECISIVENESS_SYS_PROMPT
 from tqdm.contrib.concurrent import thread_map
 import openai
@@ -36,11 +34,11 @@ def prepare_inputs(example):
 def extract_judge_results(judge_output_text):
     try:
         decisiveness_score = float(judge_output_text.split('Decisiveness score: ')[1].strip())
-        ling_uncertain_score = 1. - decisiveness_score
+        verbal_uncertain_score = 1. - decisiveness_score
     except Exception as e:
-        ling_uncertain_score = -1.
+        verbal_uncertain_score = -1.
     
-    return ling_uncertain_score
+    return verbal_uncertain_score
 
 
 def get_batch_results(judge_model, tokenizer, batch_message):
@@ -79,12 +77,12 @@ def get_batch_results(judge_model, tokenizer, batch_message):
             answer_tokens = tokenizer.batch_decode(outputs[:, inputs.input_ids.shape[1]:], skip_special_tokens=True) # (n_res_per_q)
     
     answer_tokens = [ans.strip() for ans in answer_tokens]
-    ling_uncertain_scores_batch = []
+    verbal_uncertain_scores_batch = []
     for judge_output_text in answer_tokens:
-        ling_uncertain_scores_batch.append(
+        verbal_uncertain_scores_batch.append(
             extract_judge_results(judge_output_text)
         )
-    return ling_uncertain_scores_batch
+    return verbal_uncertain_scores_batch
 
 def judge_main(args):
     dataset = args.dataset
@@ -97,18 +95,20 @@ def judge_main(args):
         input_file = args.input_file
     else:
         input_file = f"{evaled_model_name}_{dataset}_{split}_{args.prompt_method}_{args.temperature}.jsonl"
-    with jsonlines.open(join(args.results_dir, input_file), 'r') as f:
+
+    out_root_dir = f"{current_dir}/{args.results_dir}"
+    with jsonlines.open(join(out_root_dir, input_file), 'r') as f:
         qa_ds = list(f)
     ##########################################
     if args.results_fn:
         results_fn = args.results_fn
     else:
-        results_fn = f"{evaled_model_name}_{dataset}_{split}_{args.prompt_method}_{args.temperature}_lu-llm-judge.json"
-    ling_uncertain_scores = []
-    if os.path.exists(join(args.results_dir, results_fn)):
-        with open(join(args.results_dir, results_fn), 'r') as f:
-            ling_uncertain_scores = json.load(f)
-    history_i = len(ling_uncertain_scores)
+        results_fn = f"{evaled_model_name}_{dataset}_{split}_{args.prompt_method}_{args.temperature}_vu-llm-judge.json"
+    verbal_uncertain_scores = []
+    if os.path.exists(join(out_root_dir, results_fn)):
+        with open(join(out_root_dir, results_fn), 'r') as f:
+            verbal_uncertain_scores = json.load(f)
+    history_i = len(verbal_uncertain_scores)
 
     ##### get judged decisiveness scores and extracted assertions #####
     all_message = []
@@ -141,33 +141,33 @@ def judge_main(args):
     
     for i in tqdm(range(0, len(all_message), batch_size)):
         batch_message = all_message[i:i+batch_size]
-        ling_uncertain_scores_batch = get_batch_results(judge_model, tokenizer, batch_message)
+        verbal_uncertain_scores_batch = get_batch_results(judge_model, tokenizer, batch_message)
         
-        # group ling_uncertain_scores_batch each N
-        ling_uncertain_scores_q = [] # for each question
-        assert len(ling_uncertain_scores_batch) % N == 0
-        for j in range(len(ling_uncertain_scores_batch)//N):
-            ling_uncertain_scores_q.append(
-                ling_uncertain_scores_batch[j*N:(j+1)*N]
+        # group verbal_uncertain_scores_batch each N
+        verbal_uncertain_scores_q = [] # for each question
+        assert len(verbal_uncertain_scores_batch) % N == 0
+        for j in range(len(verbal_uncertain_scores_batch)//N):
+            verbal_uncertain_scores_q.append(
+                verbal_uncertain_scores_batch[j*N:(j+1)*N]
             )
-        ling_uncertain_scores.extend(ling_uncertain_scores_q)
+        verbal_uncertain_scores.extend(verbal_uncertain_scores_q)
 
         if i%(batch_size*5) == 0: # save every 10 batch
-            with open(join(args.results_dir, results_fn), 'w') as f:
-                assert len(ling_uncertain_scores)
-                json.dump(ling_uncertain_scores, f)
+            with open(join(out_root_dir, results_fn), 'w') as f:
+                assert len(verbal_uncertain_scores)
+                json.dump(verbal_uncertain_scores, f)
 
     ### save judge results ###
-    with open(join(args.results_dir, results_fn), 'w') as f:
-        assert len(ling_uncertain_scores)
-        json.dump(ling_uncertain_scores, f)
+    with open(join(out_root_dir, results_fn), 'w') as f:
+        assert len(verbal_uncertain_scores)
+        json.dump(verbal_uncertain_scores, f)
     #############################
 
 
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--results_dir', default='/home/ziweiji/Hallu_Det/uncertainty/outputs', type=str)
+    parser.add_argument('--results_dir', default='outputs', type=str)
     parser.add_argument('--temperature', default=1.0, type=float)
     parser.add_argument('--input_file', default=None, type=str)
     parser.add_argument('--results_fn', default=None, type=str)

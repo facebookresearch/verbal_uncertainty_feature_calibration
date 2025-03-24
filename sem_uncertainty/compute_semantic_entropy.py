@@ -1,19 +1,16 @@
 """Compute uncertainty measures after generating answers."""
-# /home/ziweiji/Hallu_Det/sem_uncertainty/semantic_entropy/compute_py
 from collections import defaultdict
 import logging
 import os
 import pickle
 import numpy as np
 import jsonlines
-
 import sys
-
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_path = os.path.dirname(current_dir)
 sys.path.append(f'{root_path}/sem_uncertainty/')
-from uncertainty.semantic_entropy import get_semantic_ids, cluster_assignment_entropy, EntailmentLlama, EntailmentVLLM
-from uncertainty import utils
+from semantic_entropy.semantic_entropy import get_semantic_ids, cluster_assignment_entropy, EntailmentLlama, EntailmentVLLM
+from semantic_entropy import utils
 import torch
 import argparse
 # set seed
@@ -96,16 +93,7 @@ if __name__ == '__main__':
     parser.add_argument('--split', type=str, default="test")
     parser.add_argument('--model_name', type=str, default="")
     parser.add_argument('--port', type=str, default="")
-    # parser.add_argument('--prompt_type', type=str, choices=["default", 'ignore_lu'])
+    # parser.add_argument('--prompt_type', type=str, choices=["default", 'ignore_vu'])
     args = parser.parse_args()
 
     main(args)
-"""
-
-python /home/ziweiji/Hallu_Det/calibration/eval/compute_semantic_entropy.py  \
---dataset trivia_qa \
---split test \
---port  "Meta-Llama-3.1-70B-Instruct" \
---max_alpha 1.0 
-
-"""

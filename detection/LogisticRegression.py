@@ -6,10 +6,8 @@ import argparse
 import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_path = os.path.dirname(current_dir)
-from sklearn.metrics import precision_score, recall_score
-from sklearn.metrics import roc_auc_score
-import matplotlib.pyplot as plt
-from importlib import reload
+from sklearn.metrics import precision_score, recall_score, roc_auc_score
+import json
 import sys
 sys.path.append(f"{root_path}/src/")
 from detection_utils import load_data
@@ -31,8 +29,8 @@ def train_test(X_train, y_train, X_val, y_val, val_refusal=None, return_all=Fals
         y_pred = y_pred[val_refusal]
         y_prob = y_prob[val_refusal]
         y_val = y_val[val_refusal]
-    print("y_pred", np.mean(y_pred), len(y_pred))
-    print("y_val", np.mean(y_val), len(y_val))
+    # print("y_pred", np.mean(y_pred), len(y_pred))
+    # print("y_val", np.mean(y_val), len(y_val))
 
 
     # Evaluate the model
@@ -59,7 +57,7 @@ if __name__ == '__main__':
     prompt_type = 'sentence'
     label_name = 'label'
     filter_refusal = False
-    use_predicted_test = True
+    use_predicted_test = False
     train_split = 'train'
     model_name = args.model_name
     # model_name = "Qwen2.5-7B-Instruct"

@@ -4,13 +4,12 @@ import argparse
 import re
 home_path = os.path.expanduser("~")
 current_dir = os.path.dirname(os.path.abspath(__file__))
-root_path = os.path.dirname(current_dir)
-
+root_path = os.path.dirname(os.path.dirname(current_dir))
 
 class Trainer:
     def __init__(self, output_dir, word_size, config):
         self.cwd = current_dir
-        self.conda_env_name = "detect"
+        self.conda_env_name = "vuf"
         self.conda_path =  f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
@@ -71,36 +70,6 @@ python -m torch.distributed.run --nproc_per_node=8 {root_path}/probe/train_ff_mu
 
 
 def load_config(args):
-    """
-
-#  1e-3 5e-3 1e-4 5e-4 1e-5 5e-5
-
-for D in 'trivia_qa' 'nq_open' 'pop_qa'
-do
-for L in "range(10,20)" "range(5,20)"
-do
-for U in ling_uncertainty
-do
-for MODEL in "Meta-Llama-3.1-8B-Instruct" 
-do
-for LR in 0.05 0.01 0.005 0.001 0.0005 0.0001
-do
-python ~/Hallu_Det/probe/scripts/submit_job_trainer.py \
---dataset $D \
---model_type "LinearRegressor" \
---layers_to_process $L \
---label_name $U \
---learning_rate $LR \
---internal_model_name $MODEL &
-
-done
-done
-done
-done
-done
-
-    """
-
     source_dirs = [f"{root_path}/datasets/{args.dataset}/{args.internal_model_name}/"]
     data_paths = []
     for d in source_dirs:
@@ -123,7 +92,7 @@ done
         "model_type": args.model_type,
         "info_type": "last", # don't add only question!!
         "save_cache": args.save_cache,
-        "label_name":  args.label_name, # "ling_uncertainty", "sematic_entropy" 
+        "label_name":  args.label_name, # "verbal_uncertainty", "sematic_entropy" 
         "layers_to_process": args.layers_to_process,
         "internal_model_name": args.internal_model_name,
         "source_dirs": source_dirs,
@@ -186,7 +155,7 @@ def get_run_output_dir(args):
         datatset.append(source_dir.split("/")[-3])
     datatset = '_'.join(datatset)
     datasplit = source_dirs[0].split("/")[-2]
-    description = f"outputs/{model_type}_{label_name}/{datatset}_{datasplit}/{lr}_{layers_to_process}"
+    description = f"{root_path}/probe/outputs/{model_type}_{label_name}/{datatset}_{datasplit}/{lr}_{layers_to_process}"
     # description += datetime.datetime.now().strftime("%m%d-%H%M")
     return description
 

@@ -8,7 +8,7 @@ home_path = os.path.expanduser("~")
 class Trainer:
     def __init__(self, output_dir, word_size, config):
         self.cwd = current_dir
-        self.conda_env_name = "detect"
+        self.conda_env_name = "vuf"
         self.conda_path = f"{home_path}/anaconda3"
         self.output_dir = output_dir
         self.training_args = config.get("training_args", {})
@@ -42,7 +42,7 @@ echo "Python version: $(python --version)"
 echo "Using torchrun: $(which torchrun)"
 echo "Conda envs: $(conda env list)"
 
-python {root_path}/sem_uncertainty/semantic_entropy/{task}.py \\
+python {root_path}/sem_uncertainty/{task}.py \\
     {args}
         """
         print(cmd)
@@ -59,61 +59,7 @@ python {root_path}/sem_uncertainty/semantic_entropy/{task}.py \\
 def load_config(args):
     """
 
-for D in 'trivia_qa' 'nq_open' 'pop_qa' 
-do
-for SPLIT in 'train' 'val' 'test'
-do
-for MODEL in "Meta-Llama-3.1-8B-Instruct"
-do
-for T in 0.1
-do
-python {root_path}/sem_uncertainty/semantic_entropy/scripts/submit_job_generate.py \
---dataset $D \
---prompt_type "sentence" \
---split $SPLIT \
---temperature $T \
---model_name $MODEL &
 
-done
-done
-done
-done
-
-
-for MODEL in "Meta-Llama-3.1-8B-Instruct"
-do
-for D in 'trivia_qa' 'nq_open' 'pop_qa'
-do
-for SPLIT in "train"
-do
-python {root_path}/sem_uncertainty/semantic_entropy/eval_acc.py \
---dataset $D \
---split $SPLIT \
---model_name $MODEL \
---port 'http://learnfair6012:8000/v1' &
-done
-done
-done
-
-Qwen2.5-7B-Instruct Mistral-7B-Instruct-v0.3
-
-
-
-for MODEL in "Meta-Llama-3.1-8B-Instruct"
-do
-for D in 'trivia_qa' 'nq_open' 'pop_qa'
-do
-for SPLIT in train
-do
-python get_refusal_rate.py \
---dataset $D \
---split $SPLIT \
---model_name $MODEL \
---port 'http://learnfair6004:8000/v1' &
-
-done
-done
-done
 
 for MODEL in "Meta-Llama-3.1-8B-Instruct"
 do
@@ -130,24 +76,6 @@ python eval_all_responses.py \
 done
 done
 done
-    parser.add_argument('--prompt_type', type=str, choices=["default", 'ignore_lu'])
-
-
-
-for D in 'trivia_qa' 'nq_open' 'pop_qa'
-do
-for SPLIT in "train" 'test' 'val'
-do
-python {root_path}/sem_uncertainty/semantic_entropy/compute_semantic_entropy.py \
---dataset $D \
---prompt_type $T \
---split $SPLIT \
---port 'http://cr1-h100-p548xlarge-87:8000/v1'
-
-done
-done
-done
-
 
    """
     

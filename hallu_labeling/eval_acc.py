@@ -9,11 +9,10 @@ import json
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_path = os.path.dirname(current_dir)
 import sys
-sys.path.append(f'{root_path}/sem_uncertainty/')
-from eval_all_responses import VLLM
-from semantic_entropy.uncertainty.utils.utils import batch_llm_metric
-from semantic_entropy.uncertainty.models.huggingface_models import HuggingfaceModel
-from tqdm.contrib.concurrent import thread_map
+sys.path.append(f'{root_path}')
+from src.eval_utils import VLLM
+from semantic_entropy.utils import batch_llm_metric
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

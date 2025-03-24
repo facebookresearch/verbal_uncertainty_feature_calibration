@@ -1,81 +1,21 @@
+import os
+from os.path import join
+home_path = os.path.expanduser("~")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, set_seed
 set_seed(42)
-import pandas as pd
 from tqdm.auto import tqdm
-from os.path import join
-import numpy as np
-from ast import literal_eval
 import argparse
 import sys
+sys.path.append(current_dir)
+from prompts import get_qa_system_prompt
 import os
-if os.path.exists('/home/ziweiji/'):
-    root_path = '/home/ziweiji/Hallu_Det'
-else:
-    root_path = '/private/home/ziweiji/Hallu_Det'
-sys.path.append(root_path)
-
-from ling_uncertainty.prompts import get_qa_system_prompt
-try:
-    from lu_llm_judge import judge_main
-except:
-    print('cannot import lu_llm_judge')
-import os
-import json
+os.environ['HF_HOME'] = f'{home_path}/.cache/huggingface/'
 import jsonlines
-
-
-
-def load_qa_ds(dataset_name, split):
-    data_file = f'{root_path}/datasets/{dataset_name}/sampled/{split}.csv'
-    data = pd.read_csv(data_file)
-
-    qa_ds = []
-    if dataset_name in ["pop_qa", "trivia_qa", "IDK"]:
-        for i, row in data.iterrows():
-            qa_ds.append({
-                    'id': row['id'],
-                    'question': row['question'].strip(),
-                    'answer': literal_eval(row['answer']),
-                    'answerable': 1
-            })
-
-    elif dataset_name == 'nq_open':
-        for i, row in data.iterrows():
-            qa_ds.append({
-                    'id': row['id'],
-                    'question': row['question'].strip()+'?',
-                    'answer': literal_eval(row['answer']),
-                    'answerable': 1
-            })
-
-    elif dataset_name == 'SelfAware':
-        # SelfAware: 3369 questions
-        for split in ['train', 'dev', 'test']:
-            with open(f"/data/home/jadeleiyu/mechanistic-uncertainty-calibrate/data/{dataset_name}/{dataset_name}.ncan.{split}.json", 'r') as f:
-                qa_data = json.load(f)
-            for x in qa_data:
-                qa_ds.append({
-                'question': x[0]['content'],
-                'answer': 'N/A',
-                'answerable': int(eval(x[0]['answerable']))
-            })
-    
-    elif dataset_name == 'KUQ':
-        # KUQ: 4777 questions
-        for split in ['train', 'dev', 'test']:
-            with open(f"/data/home/jadeleiyu/mechanistic-uncertainty-calibrate/data/{dataset_name}/{dataset_name}.ncan.{split}.json", 'r') as f:
-                qa_data = json.load(f)
-            for x in qa_data:
-                qa_ds.append({
-                'question': x[0]['content'],
-                'answer': 'N/A',
-                'answerable': 1 - int(eval(x[0]['unknown']))
-            })
-    
-    return qa_ds
-
-
+sys.path.append(root_path)
+from sem_uncertainty.generate_answers import load_qa_ds
 
 def prepare_inputs(tokenizer, batch_question, sys_prompt):
     batch_messages = []
@@ -99,9 +39,12 @@ def main_generate(args):
     dataset = args.dataset
     split = args.split
     model_name = args.model_name
-    # model_name = 'meta-llama/Meta-Llama-3.1-8B-Instruct'
-    # model_name = "mistralai/Mistral-7B-Instruct-v0.3"
-    # model_name = 'Qwen/Qwen2.5-7B-Instruct'
+    if args.model_name == 'Meta-Llama-3.1-8B-Instruct':
+        model_name = 'meta-llama/Meta-Llama-3.1-8B-Instruct'
+    elif args.model_name == 'Mistral-7B-Instruct-v0.3':
+        model_name = "mistralai/Mistral-7B-Instruct-v0.3"
+    elif args.model_name == 'Qwen2.5-7B-Instruct':
+        model_name = 'Qwen/Qwen2.5-7B-Instruct'
 
     model_name_short = model_name.split('/')[-1]
     ### load LM and tokenizer ###
@@ -122,12 +65,13 @@ def main_generate(args):
     #############################
 
     results_fn = f"{model_name_short}_{dataset}_{split}_{args.prompt_method}_{args.temperature}.jsonl"
-    os.makedirs(args.results_dir, exist_ok=True)
-    if os.path.exists(join(args.results_dir, results_fn)):
-        with jsonlines.open(join(args.results_dir, results_fn), 'r') as f:
+    out_root_dir = f"{current_dir}/{args.results_dir}"
+    os.makedirs(out_root_dir, exist_ok=True)
+    if os.path.exists(join(out_root_dir, results_fn)):
+        with jsonlines.open(join(out_root_dir, results_fn), 'r') as f:
             history = list(f)
     else:
-        with jsonlines.open(join(args.results_dir, results_fn), 'w') as f:
+        with jsonlines.open(join(out_root_dir, results_fn), 'w') as f:
             history = []
     history_i = len(history)
     print(f"History exists. Start from {history_i}")
@@ -165,19 +109,19 @@ def main_generate(args):
         assert len(batch_example) * n_response_per_question == len(answer_tokens)
         for j, x in  enumerate(batch_example):
             x['model answers'] = answer_tokens[n_response_per_question*j:n_response_per_question*(j+1)]
-            with jsonlines.open(join(args.results_dir, results_fn), 'a') as f:
+            with jsonlines.open(join(out_root_dir, results_fn), 'a') as f:
                 f.write(x)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--results_dir', default='/home/ziweiji/Hallu_Det/ling_uncertainty/outputs', type=str)
+    parser.add_argument('--results_dir', default='outputs', type=str)
     parser.add_argument('--temperature', default=1.0, type=float)
-    parser.add_argument('--n_response_per_question', default=5, type=int)
+    parser.add_argument('--n_response_per_question', default=10, type=int)
     parser.add_argument('--prompt_method', default='uncertainty', type=str)
     parser.add_argument('--max_new_tokens', default=100, type=int)
-    parser.add_argument('--dataset', default='pop_qa', type=str)
+    parser.add_argument('--dataset', default='trivia_qa', type=str)
     parser.add_argument('--split', default='test', type=str)
-    parser.add_argument('--model_name', default='meta-llama/Meta-Llama-3.1-8B-Instruct', type=str)
+    parser.add_argument('--model_name', default='Meta-Llama-3.1-8B-Instruct', type=str)
     args = parser.parse_args()
     main_generate(args)
     

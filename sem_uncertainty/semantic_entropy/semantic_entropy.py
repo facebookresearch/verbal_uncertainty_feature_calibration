@@ -23,21 +23,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.dirname(current_dir)
 import pickle
 import logging
-
 import random
 import numpy as np
-import wandb
-import openai
 import torch
-import torch.nn.functional as F
-
-from uncertainty.huggingface_models import HuggingfaceModel
-from uncertainty.utils import openai as oai
-from uncertainty.utils import utils
+import sys
+sys.path.append(current_dir)
+from huggingface_models import HuggingfaceModel
+import openai
+import utils
 import collections
-
+import wandb
 random.seed(10)
 from tqdm.contrib.concurrent import thread_map
 
@@ -83,7 +82,7 @@ class EntailmentLLM(BaseEntailment):
 
         logging.info('%s input: %s', self.name, prompt)
 
-        hashed = oai.md5hash(prompt)
+        hashed = utils.md5hash(prompt)
         if hashed in self.prediction_cache:
             logging.info('Restoring hashed instead of predicting with model.')
             response = self.prediction_cache[hashed]
@@ -114,7 +113,7 @@ class EntailmentLLM(BaseEntailment):
         batch_prompt, batch_i = [], []
         for i, (text1, text2) in enumerate(zip(text_list1, text_list2)):
             prompt = self.equivalence_prompt(text1, text2, example['question'], prompt_type=self.prompt_type)
-            hashed = oai.md5hash(prompt)
+            hashed = utils.md5hash(prompt)
             if hashed in self.prediction_cache:
                 response = self.prediction_cache[hashed]
                 full_responses[i] = response
@@ -128,7 +127,7 @@ class EntailmentLLM(BaseEntailment):
             
         assert len(generate_responses) == len(batch_prompt) == len(batch_i)
         for i, prompt, response in zip(batch_i, batch_prompt, generate_responses):
-            hashed = oai.md5hash(prompt)
+            hashed = utils.md5hash(prompt)
             self.prediction_cache[hashed] = response
             full_responses[i] = response
             
