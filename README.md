@@ -41,7 +41,7 @@ bash sem_uncertainty/scripts/run_compute_uncertainty.sh
 ```
 bash verbal_uncertainty/scripts/generate.sh
 ```
-2. Use LLM to judge the verbal uncertainty level
+2. Calcualte verbal uncertainty via LLM-as-a-Judge
 ```
 bash verbal_uncertainty/scripts/judge.sh
 ```
@@ -75,35 +75,35 @@ bash calibration/scripts/merge_vuf.sh
 ```
 bash calibration/scripts/causal.sh
 ```
-2. evaluate verbal uncertainty
+2. Evaluate verbal uncertainty
 ```
 bash calibration/scripts/causal_eval.sh
 ```
 
 ## Hallucination Detector
-Train LogisticRegression(LR)-based detector based on uncertainties
+Train a LogisticRegression-based detector based on uncertainties
 ```
 bash detection/scripts/detection.sh
 ```
 
 ## Uncertainty Calibration for Hallucination Mitigation
-calibrate verbal uncertainty with semantic entropy to mitigate hallucinations
+1. Calibrate verbal uncertainty with semantic uncertainty to mitigate hallucinations
 ```
 bash calibration/scripts/semantic_control.sh
 ```
-## Evaluation
+2. Evaluate verbal uncertainty, ACC, and refusal
 ```
 bash calibration/scripts/semantic_control_eval.sh
 ```
 
 
 ## Ablation Study: Uncertainty Probe
-Train uncrtainty probes to predict uncertainties without multi-sampling.
+Train uncrtainty probes to predict uncertainties (verbal uncertainty and semantic entropy) without multi-sampling.
 1. Obtain the hidden states of questions
 ```
 bash probe/scripts/get_hidden_state.sh
 ```
-2. Train the regressor probe given hidden state to predict the uncertainties (verbal uncertainty and semantic entropy)
+2. Train the regressor probe given hidden state to predict the uncertainties
 ```
 bash probe/scripts/trainer.sh
 ```

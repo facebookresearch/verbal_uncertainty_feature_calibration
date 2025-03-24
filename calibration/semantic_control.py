@@ -67,7 +67,7 @@ def get_answers(questions, alphas, detection_res, out_file, process_layers, mode
 
 
 def load_detection_res(dataset, model_name):
-    path = f"{root_path}/detector/LR_outputs/{dataset}/{model_name}/verbal_uncertainty_sentence_semantic_entropy.json"
+    path = f"{root_path}/detection/LR_outputs/{dataset}/{model_name}/verbal_uncertainty_sentence_semantic_entropy.json"
     with open(path) as f:
         detection_res = json.load(f)["y_pred"]
     return detection_res
