@@ -22,9 +22,12 @@ bash datasets/scripts/download_dataset.sh
 ## Set up vLLM Server
 Set up [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#quickstart-online) sever to infer LLM. 
 The LLM is used for labelling and evaluation in the following steps.
+
+Update the `slurm_partition` in `src/vllm-all.py` to match your own SLURM partition.
 ```
 python src/vllm-all.py
 ```
+To obtain the available port, run the `get_available_servers` function located in `src/eval_utils.py`.
 
 ## Semantic Uncertainty Calculation
 1. Sample multiple answers 
